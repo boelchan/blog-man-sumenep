@@ -1,0 +1,127 @@
+[
+    {
+        "title": "Home",
+        "icon": "home",
+        "route": "home",
+        "role": [
+            "superadmin",
+            "operator"
+        ]
+    },
+    {
+        "title": "Post",
+        "icon": "pencil",
+        "role": [
+            "superadmin",
+            "operator"
+        ],
+        "sub": [
+            {
+                "title": "Banner",
+                "route": "post.banner.index",
+                "role": [
+                    "superadmin",
+                    "operator"
+                ]
+            },
+            {
+                "title": "Pamflet",
+                "route": "post.pamflet.index",
+                "role": [
+                    "superadmin",
+                    "operator"
+                ]
+            },
+            {
+                "title": "Agenda",
+                "route": "post.agenda.index",
+                "role": [
+                    "superadmin",
+                    "operator"
+                ]
+            },
+            {
+                "title": "Gallery",
+                "route": "post.gallery.index",
+                "role": [
+                    "superadmin",
+                    "operator"
+                ]
+            },
+            {
+                "title": "Promo",
+                "route": "post.promo.index",
+                "role": [
+                    "superadmin",
+                    "operator"
+                ]
+            },
+            {
+                "title": "Artikel",
+                "route": "post.artikel.index",
+                "role": [
+                    "superadmin",
+                    "operator"
+                ]
+            },
+            {
+                "title": "Informasi",
+                "route": "post.informasi.index",
+                "role": [
+                    "superadmin",
+                    "operator"
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Pelayanan",
+        "icon": "stethoscope",
+        "route": "post.pelayanan.index",
+        "role": [
+            "superadmin",
+            "operator"
+        ]
+    },
+    {
+        "title": "Dokter",
+        "icon": "users",
+        "route": "post.tim.index",
+        "role": [
+            "superadmin",
+            "operator"
+        ]
+    },
+    {
+        "title": "Profil",
+        "icon": "building-community",
+        "route": "post.profil.index",
+        "role": [
+            "superadmin",
+            "operator"
+        ]
+    },
+    {
+        "title": "Sistem",
+        "icon": "settings",
+        "role": [
+            "superadmin"
+        ],
+        "sub": [
+            {
+                "title": "Pengaturan",
+                "route": "identitas.index",
+                "role": [
+                    "superadmin"
+                ]
+            },
+            {
+                "title": "User",
+                "route": "user.index",
+                "role": [
+                    "superadmin"
+                ]
+            }
+        ]
+    }
+]
