@@ -17,88 +17,21 @@
         ],
         "sub": [
             {
-                "title": "Banner",
-                "route": "post.banner.index",
+                "title": "List",
+                "route": "post.index",
                 "role": [
                     "superadmin",
                     "operator"
                 ]
             },
             {
-                "title": "Pamflet",
-                "route": "post.pamflet.index",
-                "role": [
-                    "superadmin",
-                    "operator"
-                ]
-            },
-            {
-                "title": "Agenda",
-                "route": "post.agenda.index",
-                "role": [
-                    "superadmin",
-                    "operator"
-                ]
-            },
-            {
-                "title": "Gallery",
-                "route": "post.gallery.index",
-                "role": [
-                    "superadmin",
-                    "operator"
-                ]
-            },
-            {
-                "title": "Promo",
-                "route": "post.promo.index",
-                "role": [
-                    "superadmin",
-                    "operator"
-                ]
-            },
-            {
-                "title": "Artikel",
-                "route": "post.artikel.index",
-                "role": [
-                    "superadmin",
-                    "operator"
-                ]
-            },
-            {
-                "title": "Informasi",
-                "route": "post.informasi.index",
+                "title": "Kategori",
+                "route": "category.index",
                 "role": [
                     "superadmin",
                     "operator"
                 ]
             }
-        ]
-    },
-    {
-        "title": "Pelayanan",
-        "icon": "stethoscope",
-        "route": "post.pelayanan.index",
-        "role": [
-            "superadmin",
-            "operator"
-        ]
-    },
-    {
-        "title": "Dokter",
-        "icon": "users",
-        "route": "post.tim.index",
-        "role": [
-            "superadmin",
-            "operator"
-        ]
-    },
-    {
-        "title": "Profil",
-        "icon": "building-community",
-        "route": "post.profil.index",
-        "role": [
-            "superadmin",
-            "operator"
         ]
     },
     {

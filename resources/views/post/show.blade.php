@@ -1,0 +1,61 @@
+@extends('layouts.app')
+
+@section('title', 'Post')
+@section('sub-title', 'Overview')
+
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center row-cards">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            Preview
+                        </h3>
+                        <div class="card-actions">
+                            <a href="javascript:void(0)" class="btn btn-outline-danger btn-sm delete-data" data-url="{{ route('post.destroy', [$post->id, 'uuid' => $post->uuid]) }}" data-token="{{ csrf_token() }}" data-label="{{ $post->judul }}"> Hapus </a>
+                            <a href="{{ route('post.edit', [$post->id, 'uuid' => $post->uuid]) }}" class="btn btn-primary btn-sm">Edit</a>
+                        </div>
+                    </div>
+                    <div class="card-body py-2">
+                        @if ($post->publish == 'ya')
+                            <span class="badge bg-lime">Publish {{ $post->published_at }}</span>
+                            @if ($post->tampil_banner == 'ya')
+                                <span class="badge bg-info mt-1">Ditampilkan di Banner</span>
+                            @endif
+                        @else
+                            <span class="badge bg-secondary-lt ">Pending</span>
+                        @endif
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="fw-bold">Judul</div>
+                            <div>{{ $post->judul }}</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="fw-bold">Meta Keywords</div>
+                            <div>{{ $post->meta_keywords ?? '-' }}</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="fw-bold">Meta Description</div>
+                            <div>{{ $post->meta_description ?? '-' }}</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        @if ($post->gambar)
+                            <div class="row justify-content-center mb-5">
+                                <img src="{{ $post->gambar ? asset('storage/post/' . $post->gambar) : '' }}" class="img-thumbnail rounded">
+                            </div>
+                        @endif
+                        {!! $post->konten !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

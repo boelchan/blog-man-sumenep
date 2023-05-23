@@ -28,7 +28,7 @@ class UserProfileController extends Controller
 
         $request->validate([
             'name' => 'required|max:30',
-            'email' => 'required|email|unique:users,email,' . $user->id,
+            'email' => 'required|email|unique:users,email,'.$user->id,
         ]);
 
         $user->name = ucwords(strtolower($request->name));

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enum\CategoryEnum;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -44,34 +43,12 @@ class Post extends Model implements Searchable
 
     public function kategori()
     {
-        return $this->belongsTo(PostCategory::class, 'kategori_id');
+        return $this->belongsTo(Category::class, 'kategori_id');
     }
 
     public function getUrlAttribute()
     {
-        switch ($this->kategori_id) {
-            case CategoryEnum::AGENDA->value:
-                return route('front.agenda.baca', $this->slug);
-                break;
-            case CategoryEnum::ARTIKEL->value:
-                return route('front.artikel.baca', $this->slug);
-                break;
-            case CategoryEnum::INFORMASI->value:
-                return route('front.informasi.baca', $this->slug);
-                break;
-            case CategoryEnum::PROMO->value:
-                return route('front.promo.baca', $this->slug);
-                break;
-            case CategoryEnum::GALLERY->value:
-                return route('front.gallery.baca', $this->slug);
-                break;
-            case CategoryEnum::PAMFLET->value:
-                return route('front.pamflet.baca', $this->slug);
-                break;
-            case CategoryEnum::BANNER->value:
-                return route('front.banner.baca', $this->slug);
-                break;
-        }
+        return route('front.post.baca', $this->slug);
     }
 
     public function getUrlGambarAttribute()
@@ -81,6 +58,6 @@ class Post extends Model implements Searchable
 
     public function getPublishDateAttribute()
     {
-        return $this->kategori_id == CategoryEnum::AGENDA->value ? $this->tanggal : Carbon::parse($this->published_at)->diffForHumans();
+        return Carbon::parse($this->published_at)->diffForHumans();
     }
 }

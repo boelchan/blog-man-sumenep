@@ -1,22 +1,10 @@
 <?php
 
-use App\Http\Controllers\AgendaController;
-use App\Http\Controllers\ArtikelController;
-use App\Http\Controllers\BannerController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontController;
-use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IdentitasController;
-use App\Http\Controllers\InformasiController;
-use App\Http\Controllers\PamfletController;
-use App\Http\Controllers\PelayananController;
-use App\Http\Controllers\PoliController;
-use App\Http\Controllers\PostCategoryController;
-use App\Http\Controllers\PostTopicController;
-use App\Http\Controllers\ProfilController;
-use App\Http\Controllers\PromoController;
-use App\Http\Controllers\RuanganController;
-use App\Http\Controllers\TimController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -67,24 +55,9 @@ Route::middleware(['auth', 'role:superadmin'])->group(function () {
     Route::resource('identitas', IdentitasController::class);
 });
 
-Route::middleware(['auth', 'role:superadmin|operator'])->prefix('post')->as('post.')->group(function () {
-    Route::resource('banner', BannerController::class);
-    Route::resource('pamflet', PamfletController::class);
-    Route::resource('agenda', AgendaController::class);
-    Route::resource('artikel', ArtikelController::class);
-    Route::resource('promo', PromoController::class);
-    Route::resource('gallery', GalleryController::class);
-    Route::resource('informasi', InformasiController::class);
-    Route::resource('pelayanan', PelayananController::class);
-    Route::resource('profil', ProfilController::class);
-    Route::resource('tim', TimController::class);
-    Route::resource('poli', PoliController::class);
-    Route::resource('ruangan', RuanganController::class);
-});
-
-Route::middleware(['auth', 'role:superadmin'])->prefix('setting')->as('setting.')->group(function () {
-    Route::resource('post-topic', PostTopicController::class);
-    // Route::resource('post-category', PostCategoryController::class);
+Route::middleware(['auth', 'role:superadmin'])->group(function () {
+    Route::resource('post', PostController::class);
+    Route::resource('category', CategoryController::class);
 });
 
 Route::post('summernote-upload-image', function () {

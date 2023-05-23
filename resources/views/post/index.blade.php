@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'pamflet')
+@section('title', 'List Postingan')
 
 @section('content')
     <div class="container">
         <div class="col-md-12">
 
-            <x-datatable.filter target='pamflet-table' collapsed="true">
+            <x-datatable.filter target='post-table' collapsed="true">
                 <div class="col-md-3">
                     <x-form-input name="judul" label="Judul" floating />
                 </div>
