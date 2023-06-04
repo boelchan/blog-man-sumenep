@@ -4,11 +4,9 @@ namespace App\Enum;
 
 enum CategoryEnum: int
 {
-    case AGENDA = 1;
-    case ARTIKEL = 2;
-    case GALLERY = 3;
-    case PROMO = 4;
-    case INFORMASI = 5;
-    case PAMFLET = 6;
-    case BANNER = 7;
+    case PROFIL = 1;
+    case PAMFLET = 2;
+    case BANNER = 3;
+    case INFORMASI = 4;
+    case ARTIKEL = 5;
 }

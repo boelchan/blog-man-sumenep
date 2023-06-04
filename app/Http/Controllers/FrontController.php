@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enum\CategoryEnum;
+use App\Models\Category;
 use App\Models\Poly;
 use App\Models\Post;
 use App\Models\Profile;
@@ -18,9 +19,9 @@ class FrontController extends Controller
     public function navbarMenu()
     {
         $profilMenu = Profile::where('publish', 'ya')->get();
-        $layananMenu = Service::where('publish', 'ya')->get();
+        $kategoriMenu = Category::whereNotIn('id', [1, 2, 3])->get();
 
-        return ['profil' => $profilMenu, 'layanan' => $layananMenu];
+        return ['profilMenu' => $profilMenu, 'kategoriMenu' => $kategoriMenu];
     }
 
     public function index()
@@ -29,23 +30,20 @@ class FrontController extends Controller
 
         $banner = Post::where('kategori_id', CategoryEnum::BANNER)->where('publish', 'ya')->orderBy('publish_at', 'asc')->get();
         $post = Post::where('tampil_banner', 'ya')->where('publish', 'ya')->orderBy('publish_at', 'desc')->orderBy('updated_at', 'desc')->get();
+        $slider = $banner->merge($post);
 
         $pamflet = Post::where('kategori_id', CategoryEnum::PAMFLET)->where('publish', 'ya')->orderBy('publish_at', 'desc')->orderBy('updated_at', 'desc')->get()->take(6);
-        $slider = $banner->merge($post);
-        $layanan = Service::where('publish', 'ya')->get()->take(5);
-        $tim = Team::where('publish', 'ya')->get()->take(4);
-
-        $tentangKami = Profile::find(3);
+        $tentangKami = Profile::find(1);
 
         $meta = [
             'title' => 'Beranda',
             'category' => 'Beranda',
-            'description' => 'Beranda RSIA Siti Aisyah Pamekasan, Home',
-            'keywords' => 'RSIA siti Aisyah Pamekasan',
+            'description' => 'MAN Sumenep',
+            'keywords' => 'MAN Sumenep',
             'image' => setting('logo'),
         ];
 
-        return view('front.index', compact('navbarMenu', 'slider', 'post', 'tentangKami', 'tim', 'pamflet', 'layanan', 'meta'));
+        return view('front.index', compact('navbarMenu', 'slider', 'tentangKami', 'pamflet', 'meta'));
     }
 
     public function agenda($slug = '')
