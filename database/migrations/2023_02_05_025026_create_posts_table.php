@@ -25,7 +25,7 @@ return new class extends Migration
             $table->text('konten')->nullable();
             $table->string('tampil_banner', 5)->default('tidak');
             $table->string('publish', 5)->default('ya');
-            $table->dateTime('published_at')->nullable();
+            $table->dateTime('publish_at')->nullable();
             $table->timestamps();
         });
     }

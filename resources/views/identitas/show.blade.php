@@ -35,7 +35,7 @@
                             <div>{{ $agenda->meta_description ?? '-' }}</div>
                         </div>
                         @if ($agenda->publish == 'ya')
-                            <span class="badge bg-success-lt">Publish {{ $agenda->published_at }}</span>
+                            <span class="badge bg-success-lt">Publish {{ $agenda->publish_at }}</span>
                             @if ($agenda->tampil_banner == 'ya')
                                 <span class="badge bg-primary-lt">Ditampilkan di Banner</span>
                             @endif

@@ -18,6 +18,7 @@ class CategorySeeder extends Seeder
             ['nama' => 'Profil', 'slug' => 'Profil'],
             ['nama' => 'Pamflet', 'slug' => 'pamflet'],
             ['nama' => 'Banner', 'slug' => 'banner'],
+            ['nama' => 'Informasi', 'slug' => 'informasi'],
             ['nama' => 'Artikel', 'slug' => 'artikel'],
             ['nama' => 'Agenda', 'slug' => 'agenda'],
         ]);

@@ -32,11 +32,11 @@ class PostDataTable extends DataTable
             });
         }
 
-        return $dataTable->editColumn('published_at', function ($query) {
+        return $dataTable->editColumn('publish_at', function ($query) {
             if ($query->publish == 'ya') {
-                $status = ' <span class="badge bg-lime mb-1">Publish '.Carbon::parse($query->published_at)->diffForHumans().'</span> ';
+                $status = ' <span class="badge bg-lime mb-1">Publish '.Carbon::parse($query->publish_at)->diffForHumans().'</span> ';
                 if ($query->tampil_banner == 'ya') {
-                    $status .= '<br><span class="badge bg-info">Tampil di Banner</span> ';
+                    $status .= '<span class="badge bg-info mb-1">Tampil di Banner</span> ';
                 }
 
                 return $status;
@@ -50,10 +50,10 @@ class PostDataTable extends DataTable
             ->editColumn('action', function ($query) {
                 return view('components.button.show', ['action' => route('post.show', [$query->id, 'uuid' => $query->uuid])]).
                     view('components.button.edit', ['action' => route('post.edit', [$query->id, 'uuid' => $query->uuid])]).
-                    view('components.button.destroy', ['action' => route('post.destroy', [$query->id, 'uuid' => $query->uuid]), 'label' => $query->judul, 'target' => 'post-table']);
+                    (($query->id == 1) ? '' : view('components.button.destroy', ['action' => route('post.destroy', [$query->id, 'uuid' => $query->uuid]), 'label' => $query->judul, 'target' => 'post-table']));
             })
-            ->rawColumns(['published_at', 'action'])
-            ->orderColumn('published_at', 'updated_at $1');
+            ->rawColumns(['publish_at', 'action'])
+            ->orderColumn('publish_at', 'updated_at $1');
     }
 
     public function query(Post $model)
@@ -66,7 +66,7 @@ class PostDataTable extends DataTable
         return $this->builder()
             ->setTableId('post-table')
             ->columns($this->getColumns())
-            ->orderBy(2, 'desc')
+            ->orderBy(3, 'asc')
             ->ajax([
                 'data' => 'function(d) { 
                     d.judul = $("#judul").val();
@@ -85,7 +85,7 @@ class PostDataTable extends DataTable
             Column::computed('id')->title('no')->data('DT_RowIndex'),
             Column::computed('kategori'),
             Column::make('judul'),
-            Column::make('published_at')->title('status'),
+            Column::make('publish_at')->title('status'),
             Column::computed('action')->addClass('text-center'),
         ];
     }

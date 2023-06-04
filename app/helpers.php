@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Identity;
+use Carbon\Carbon;
 use Jenssegers\Agent\Agent;
 
 function browser_agent($user_agent)
@@ -28,4 +29,14 @@ function angka($value)
 function setting($tipe)
 {
     return Identity::setting($tipe);
+}
+
+function tanggal($value)
+{
+    return Carbon::parse($value)->format('d/m/Y');
+}
+
+function tanggalJam($value)
+{
+    return Carbon::parse($value)->format('d/m/Y H:i');
 }

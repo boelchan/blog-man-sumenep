@@ -21,6 +21,7 @@
                                             <img id="output" src="{{ $post->gambar ? asset('storage/gambar/' . $post->gambar) : '' }}" class="img-fluid rounded">
                                             <x-form-input name="gambar" id="gambar" type="file" accept="image/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" />
                                         </div>
+                                        <x-form-select name="kategori_id" label="Kategori" :options="$kategoriOption" class="mb-2"/>
                                         <x-form-textarea name="judul" label="Judul" class="mb-2 h-auto" rows="3" />
                                         <x-form-textarea name="meta_keywords" label="Meta Keyword" class="mb-2 h-auto" rows="3" />
                                         <x-form-textarea name="meta_description" label="Meta Deskripsi" class="mb-2 h-auto" rows="3" />
@@ -31,7 +32,7 @@
                                                 <x-form-radio name="publish" value="pending" label="Pending" x-on:click="open = ! open" />
                                             </x-form-group>
                                             <div x-show="open">
-                                                <x-form-input name="published_at" label="Tanggal Publish" type="datetime-local" class="mb-2" />
+                                                <x-form-input name="publish_at" label="Tanggal Publish" type="datetime-local" class="mb-2" />
                                                 <x-form-group name="tampil_banner" label="Tampilkan di Banner" inline>
                                                     <x-form-radio name="tampil_banner" value="ya" label="Ya" checked />
                                                     <x-form-radio name="tampil_banner" value="tidak" label="Tidak" />

@@ -10,7 +10,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title') - RSIA Siti Aisyah Pamekasan</title>
+    <title>@yield('title') - {{ ENV('APP_NAME') }}</title>
 
     <!-- Fonts -->
     {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -43,7 +43,10 @@
             font-family: 'Poppins', sans-serif !important;
         }
 
-        body, p, li, span {
+        body,
+        p,
+        li,
+        span {
             font-family: 'Poppins', sans-serif !important;
         }
     </style>
@@ -182,7 +185,7 @@
                     <div class="row text-center align-items-center flex-row-reverse">
                         <div class="col-lg-auto ms-lg-auto">
                             <ul class="list-inline list-inline-dots mb-0">
-                                <li class="list-inline-item">Supported By <a href="mailto:boelchan@live.com" class="link-secondary">Boolean</a></li>
+                                <li class="list-inline-item">Supported By <a href="mailto:boelchan@live.com" class="link-secondary">{{ ENV('DEVELOPER') }}</a></li>
                                 <li class="list-inline-item"> <a href="https://tabler.io" class="link-secondary">Tabler</a> </li>
 
                             </ul>
@@ -190,7 +193,7 @@
                         <div class="col-12 col-lg-auto mt-3 mt-lg-0">
                             <ul class="list-inline list-inline-dots mb-0">
                                 <li class="list-inline-item">
-                                    &copy; {{ date('Y') }} RSIA Siti Aisyah Pamekasan
+                                    &copy; {{ date('Y') }} {{ ENV('APP_NAME') }}
                                 </li>
                             </ul>
                         </div>

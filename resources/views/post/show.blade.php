@@ -13,13 +13,15 @@
                             Preview
                         </h3>
                         <div class="card-actions">
-                            <a href="javascript:void(0)" class="btn btn-outline-danger btn-sm delete-data" data-url="{{ route('post.destroy', [$post->id, 'uuid' => $post->uuid]) }}" data-token="{{ csrf_token() }}" data-label="{{ $post->judul }}"> Hapus </a>
+                            @if ($post->id != 1)
+                                <a href="javascript:void(0)" class="btn btn-outline-danger btn-sm delete-data" data-url="{{ route('post.destroy', [$post->id, 'uuid' => $post->uuid]) }}" data-token="{{ csrf_token() }}" data-label="{{ $post->judul }}"> Hapus </a>
+                            @endif
                             <a href="{{ route('post.edit', [$post->id, 'uuid' => $post->uuid]) }}" class="btn btn-primary btn-sm">Edit</a>
                         </div>
                     </div>
                     <div class="card-body py-2">
                         @if ($post->publish == 'ya')
-                            <span class="badge bg-lime">Publish {{ $post->published_at }}</span>
+                            <span class="badge bg-lime">Publish {{ tanggalJam($post->publish_at) }}</span>
                             @if ($post->tampil_banner == 'ya')
                                 <span class="badge bg-info mt-1">Ditampilkan di Banner</span>
                             @endif

@@ -20,12 +20,12 @@ class IdentitySeeder extends Seeder
                 [
                     'nama' => 'Logo',
                     'slug' => 'logo',
-                    'value' => 'logo.png',
+                    'value' => 'logo-0.38290900 1685864109.jpg',
                     'tipe' => 'website',
                 ], [
                     'nama' => 'Gambar Breadcrumb ',
-                    'slug' => 'Breadcrumb',
-                    'value' => 'breadcrumb-0.16831900 1680054036.jpg',
+                    'slug' => 'breadcrumb',
+                    'value' => 'breadcrumb-0.76879500 1685864393.jpg',
                     'tipe' => 'website',
                 ], [
                     'nama' => 'Gambar Footer',

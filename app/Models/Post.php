@@ -13,7 +13,7 @@ class Post extends Model implements Searchable
 {
     use HasFactory;
 
-    public $searchableType = 'Informasi / Artikel';
+    public $searchableType = 'Post';
 
     protected $guarded = ['id'];
 
@@ -56,8 +56,8 @@ class Post extends Model implements Searchable
         return asset("storage/gambar/$this->gambar");
     }
 
-    public function getPublishDateAttribute()
+    public function getPublishAtLabelAttribute()
     {
-        return Carbon::parse($this->published_at)->diffForHumans();
+        return Carbon::parse($this->publish_at)->diffForHumans();
     }
 }

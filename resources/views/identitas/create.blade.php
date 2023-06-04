@@ -32,7 +32,7 @@
                                             <x-form-radio name="publish" value="tidak" label="Pending" x-on:click="open = false" />
                                         </x-form-group>
                                         <div x-show="open">
-                                            <x-form-input name="published_at" label="Tanggal Publish" type="date" class="mb-2" value="{{ date('Y-m-d') }}" />
+                                            <x-form-input name="publish_at" label="Tanggal Publish" type="date" class="mb-2" value="{{ date('Y-m-d') }}" />
                                             <x-form-group name="tampil_banner" label="Tampilkan di Banner" inline>
                                                 <x-form-radio name="tampil_banner" value="ya" label="Ya" />
                                                 <x-form-radio name="tampil_banner" value="tidak" label="Tidak" checked />

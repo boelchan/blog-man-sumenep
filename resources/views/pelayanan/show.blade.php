@@ -43,7 +43,7 @@
                             <div>{{ $pelayanan->meta_description ?? '-' }}</div>
                         </div>
                         @if ($pelayanan->publish == 'ya')
-                            <span class="badge bg-success-lt">Publish {{ $pelayanan->published_at }}</span>
+                            <span class="badge bg-success-lt">Publish {{ $pelayanan->publish_at }}</span>
                         @else
                             <span class="badge bg-secondary-lt ">Pending</span>
                         @endif

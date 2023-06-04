@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DataTables\PostDatatable;
-use App\Enum\CategoryEnum;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -20,16 +20,18 @@ class PostController extends Controller
     public function create()
     {
         $breadcrumbs = [['url' => route('post.index'), 'title' => 'post'], ['url' => '#', 'title' => 'tambah']];
+        $kategoriOption = Category::pluck('nama', 'id')->all();
 
-        return view('post.create', compact('breadcrumbs'));
+        return view('post.create', compact('breadcrumbs', 'kategoriOption'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'gambar' => 'mimes:jpg,jpeg,png|max:1000',
+            'kategori_id' => 'required',
             'judul' => 'required|max:250|unique:posts',
-            'published_at' => 'required_if:publish,nanti',
+            'publish_at' => 'required_if:publish,ya',
             'meta_keywords' => 'max:250',
             'meta_description' => 'max:250',
         ]);
@@ -37,7 +39,7 @@ class PostController extends Controller
         $uuid = (string) Str::uuid();
         $id = Post::create($request->all() + ['uuid' => $uuid]);
 
-        return redirect()->route('post.post.show', [$id, 'uuid' => $uuid]);
+        return redirect()->route('post.show', [$id, 'uuid' => $uuid]);
     }
 
     public function show(Post $post)
@@ -52,8 +54,9 @@ class PostController extends Controller
     {
         checkUuid($post->uuid);
         $breadcrumbs = [['url' => route('post.index'), 'title' => 'post'], ['url' => '', 'title' => 'Edit']];
+        $kategoriOption = Category::pluck('nama', 'id')->all();
 
-        return view('post.edit', compact('post', 'breadcrumbs'));
+        return view('post.edit', compact('post', 'breadcrumbs', 'kategoriOption'));
     }
 
     public function update(Request $request, Post $post)
@@ -61,7 +64,7 @@ class PostController extends Controller
         $request->validate([
             'gambar' => 'mimes:jpg,jpeg,png|max:1000',
             'judul' => 'required|max:250|unique:posts,judul,'.$post->id,
-            'published_at' => 'required_if:publish,ya',
+            'publish_at' => 'required_if:publish,ya',
             'meta_keywords' => 'max:250',
             'meta_description' => 'max:250',
         ]);

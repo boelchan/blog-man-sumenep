@@ -20,18 +20,18 @@
                                         <img id="output" src="{{ asset('static/sampel.jpg') }}" class="img-fluid rounded">
                                         <x-form-input name="gambar" id="gambar" type="file" accept="image/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" />
                                     </div>
+                                    <x-form-select name="kategori_id" label="Kategori" :options="$kategoriOption" class="mb-2"/>
                                     <x-form-textarea name="judul" label="Judul" class="mb-2 h-auto" rows="3" />
                                     <x-form-textarea name="meta_keywords" label="Meta Keyword" class="mb-2 h-auto" rows="3" />
                                     <x-form-textarea name="meta_description" label="Meta Deskripsi" class="mb-2 h-auto" rows="3" />
 
-                                    <div x-data="{ open: false }" class=" bg-secondary-lt p-3 mb-2">
+                                    <div x-data="{ open: true }" class=" bg-secondary-lt p-3 mb-2 border">
                                         <x-form-group name="publish" label="Publish" inline class="mb-2">
-                                            <x-form-radio name="publish" value="ya" label="Sekarang" checked x-on:click="open = false" />
-                                            <x-form-radio name="publish" value="nanti" label="Nanti" x-on:click="open = true" />
+                                            <x-form-radio name="publish" value="ya" checked label="Ya" x-on:click="open = true" />
                                             <x-form-radio name="publish" value="tidak" label="Pending" x-on:click="open = false" />
                                         </x-form-group>
                                         <div x-show="open">
-                                            <x-form-input name="published_at" label="Tanggal Publish" type="datetime-local" min="{{ now() }}" class="mb-2" />
+                                            <x-form-input name="publish_at" label="Tanggal Publish" type="datetime-local" class="mb-2" />
                                         </div>
                                         <x-form-group name="tampil_banner" label="Tampilkan di Banner" inline>
                                             <x-form-radio name="tampil_banner" value="ya" label="Ya" />

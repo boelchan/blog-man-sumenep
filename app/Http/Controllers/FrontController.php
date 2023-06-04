@@ -27,10 +27,10 @@ class FrontController extends Controller
     {
         $navbarMenu = $this->navbarMenu();
 
-        $banner = Post::where('kategori_id', CategoryEnum::BANNER)->where('publish', 'ya')->orderBy('published_at', 'asc')->get();
-        $post = Post::where('tampil_banner', 'ya')->where('publish', 'ya')->orderBy('published_at', 'desc')->orderBy('updated_at', 'desc')->get();
+        $banner = Post::where('kategori_id', CategoryEnum::BANNER)->where('publish', 'ya')->orderBy('publish_at', 'asc')->get();
+        $post = Post::where('tampil_banner', 'ya')->where('publish', 'ya')->orderBy('publish_at', 'desc')->orderBy('updated_at', 'desc')->get();
 
-        $pamflet = Post::where('kategori_id', CategoryEnum::PAMFLET)->where('publish', 'ya')->orderBy('published_at', 'desc')->orderBy('updated_at', 'desc')->get()->take(6);
+        $pamflet = Post::where('kategori_id', CategoryEnum::PAMFLET)->where('publish', 'ya')->orderBy('publish_at', 'desc')->orderBy('updated_at', 'desc')->get()->take(6);
         $slider = $banner->merge($post);
         $layanan = Service::where('publish', 'ya')->get()->take(5);
         $tim = Team::where('publish', 'ya')->get()->take(4);
@@ -69,7 +69,7 @@ class FrontController extends Controller
 
             return view('front.post-detail', compact('navbarMenu', 'post', 'meta'));
         } else {
-            $post = Post::where('kategori_id', CategoryEnum::AGENDA)->where('publish', 'ya')->orderBy('published_at', 'desc')->orderBy('updated_at', 'desc')->paginate(15);
+            $post = Post::where('kategori_id', CategoryEnum::AGENDA)->where('publish', 'ya')->orderBy('publish_at', 'desc')->orderBy('updated_at', 'desc')->paginate(15);
 
             $meta = [
                 'title' => 'Agenda',
@@ -104,7 +104,7 @@ class FrontController extends Controller
 
             return view('front.post-detail', compact('navbarMenu', 'post', 'meta'));
         } else {
-            $post = Post::where('kategori_id', CategoryEnum::ARTIKEL)->where('publish', 'ya')->orderBy('published_at', 'desc')->orderBy('updated_at', 'desc')->paginate(15);
+            $post = Post::where('kategori_id', CategoryEnum::ARTIKEL)->where('publish', 'ya')->orderBy('publish_at', 'desc')->orderBy('updated_at', 'desc')->paginate(15);
 
             $meta = [
                 'title' => 'Artikel',
@@ -139,7 +139,7 @@ class FrontController extends Controller
 
             return view('front.post-detail', compact('navbarMenu', 'post', 'meta'));
         } else {
-            $post = Post::where('kategori_id', CategoryEnum::PROMO)->where('publish', 'ya')->orderBy('published_at', 'desc')->orderBy('updated_at', 'desc')->paginate(15);
+            $post = Post::where('kategori_id', CategoryEnum::PROMO)->where('publish', 'ya')->orderBy('publish_at', 'desc')->orderBy('updated_at', 'desc')->paginate(15);
             $meta = [
                 'title' => 'Promo',
                 'category' => 'Promo',
@@ -173,7 +173,7 @@ class FrontController extends Controller
 
             return view('front.post-detail', compact('navbarMenu', 'post', 'meta'));
         } else {
-            $post = Post::where('kategori_id', CategoryEnum::INFORMASI)->where('publish', 'ya')->orderBy('published_at', 'desc')->orderBy('updated_at', 'desc')->paginate(15);
+            $post = Post::where('kategori_id', CategoryEnum::INFORMASI)->where('publish', 'ya')->orderBy('publish_at', 'desc')->orderBy('updated_at', 'desc')->paginate(15);
             $meta = [
                 'title' => 'Informasi',
                 'category' => 'Informasi',
@@ -207,7 +207,7 @@ class FrontController extends Controller
 
             return view('front.post-detail', compact('navbarMenu', 'post', 'meta'));
         } else {
-            $post = Post::where('kategori_id', CategoryEnum::GALLERY)->where('publish', 'ya')->orderBy('published_at', 'desc')->orderBy('updated_at', 'desc')->paginate(15);
+            $post = Post::where('kategori_id', CategoryEnum::GALLERY)->where('publish', 'ya')->orderBy('publish_at', 'desc')->orderBy('updated_at', 'desc')->paginate(15);
             $meta = [
                 'title' => 'Gallery',
                 'category' => 'Gallery',
