@@ -10,7 +10,7 @@
                     <div class="blog-details-wrapper">
                         <article class="blog-post standard-post">
                             <!-- Start Thumbnail -->
-                            @if ($post->url_gambar)
+                            @if ($post->gambar)
                                 <div class="mb-60 text-center">
                                     <img  src="{{ $post->url_gambar }}" alt="gambar" style="max-height: 500px">
                                 </div>
@@ -19,7 +19,7 @@
                             <div class="header mb-40 text-center">
                                 <h3 class="fw-normal">{{ $meta["title"] }}</h3>
                                 <div class="post-meta mt-20 justify-content-center">
-                                    <div class="post-date">{{ $post->publish_date }}</div>
+                                    <div class="post-date">{{ $post->publish_at_label }}</div>
                                 </div>
                             </div>
                             <!-- Start Content -->

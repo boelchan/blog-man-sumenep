@@ -16,7 +16,7 @@
                             </div>
                             <div class="blog-inner p-3" style="height: 110px">
                                 <div class="blog-meta m-0">
-                                    <a href="{{ $p->url }}"> <small>{{ $p->publish_date }}</small></a>
+                                    <a href="{{ $p->url }}"> <small>{{ $p->publish_at_label }}</small></a>
                                 </div>
                                 <span class="blog-title"><a class="fw-normal fs-6" href="{{ $p->url }}">{{ Str::limit($p->judul, 55, '...') }}</a></span>
                             </div>

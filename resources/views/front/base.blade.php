@@ -9,26 +9,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <meta name="title" content="{{ $meta['title'] }}">
     <meta name="description" content="{{ $meta['description'] }}">
-    <meta name="keywords" content="{{ $meta['keywords'] }}, RSIA Siti Aisyah Pamekasan, Pamekasan, RSIA, Siti Aisyah Pamekasan, siti aisyah" itemprop="keywords">
-    <meta name="author" content="RSIA Siti Aisyah Pamekasan">
+    <meta name="keywords" content="{{ $meta['keywords'] }}, {{ ENV('META_KEYWORDS') }}" itemprop="keywords">
+    <meta name="author" content="{{ ENV('META_KEYWORDS') }}">
     <meta property="og:title" content="{{ $meta['title'] }}">
     <meta property="og:description" content="{{ $meta['description'] }}">
     <meta property="og:locale" content="id_ID" />
-    <meta property="og:site_name" content="RSIA Siti Aisyah Pamekasan" />
+    <meta property="og:site_name" content="{{ ENV('META_KEYWORDS') }}" />
     <meta property="og:type" content="{{ $meta['category'] }}" />
     <meta property="og:title" content="{{ $meta['title'] }}" />
     <meta property="og:url" content="{{ url()->current() }}" />
     <meta property="og:image" content="{{ $meta['image'] ?? '' }}" />
     <meta property="og:image:width" content="220" />
     <meta property="og:image:height" content="220" />
-    <meta property="twitter:site_name" content="RSIA Siti Aisyah Pamekasan" />
+    <meta property="twitter:site_name" content="{{ ENV('META_KEYWORDS') }}" />
     <meta property="twitter:type" content="{{ $meta['category'] }}" />
     <meta property="twitter:title" content="{{ $meta['title'] }}" />
     <meta property="twitter:url" content="{{ url()->current() }}" />
     <meta property="twitter:image" content="{{ $meta['image'] ?? '' }}" />
 
     <!-- Title -->
-    <title>{{ $meta['title'] }} - RSIA Siti Aisyah Pamekasan</title>
+    <title>{{ $meta['title'] }} - {{ ENV('APP_NAME') }}</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('static/favicon.png') }}" type="image/x-icon">
 
@@ -47,10 +47,20 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
         body {
-            font-family: 'Poppins', sans-serif!important;
+            font-family: 'Poppins', sans-serif !important;
         }
-        h1, h2, h3, h4, h5, span, label, a, p, li{
-            font-family: 'Poppins', sans-serif!important;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        span,
+        label,
+        a,
+        p,
+        li {
+            font-family: 'Poppins', sans-serif !important;
         }
     </style>
 
@@ -80,34 +90,26 @@
                                         <nav class="page_nav">
                                             <ul class="mainmenu">
                                                 <li class="lavel-1 p-0"><a href="/"><span>Home</span></a></li>
-                                                <li class="lavel-1 p-0 with--drop slide-dropdown"><a href="{{ route('front.profil') }}"><span>Profil</span></a>
+                                                <li class="lavel-1 p-0 with--drop slide-dropdown">
+                                                    <a href="#"><span>Profil</span></a>
                                                     @if ($navbarMenu['profil'])
                                                         <ul class="dropdown__menu p-2">
                                                             @foreach ($navbarMenu['profil'] as $p)
-                                                                <li class="text-black px-3"><a href="{{ route('front.profil.baca', $p->slug) }}"><span>{{ $p->nama }}</span></a></li>
+                                                                <li class="text-black px-3"><a href="{{ route('front.post.baca', $p->slug) }}"><span>{{ $p->judul }}</span></a></li>
                                                             @endforeach
                                                         </ul>
                                                     @endif
                                                 </li>
-                                                <li class="lavel-1 p-0 with--drop slide-dropdown"><a href="{{ route('front.pelayanan') }}"><span>Pelayanan</span></a>
-                                                    <ul class="dropdown__menu p-2">
-                                                        @if ($navbarMenu['layanan'])
-                                                            @foreach ($navbarMenu['layanan'] as $p)
-                                                                <li class="text-black px-3"><a href="{{ $p->url }}"><span>{{ $p->nama }}</span></a></li>
+                                                <li class="lavel-1 p-0 with--drop slide-dropdown">
+                                                    <a href="#"><span>Kategori</span></a>
+                                                    @if ($navbarMenu['kategori'])
+                                                        <ul class="dropdown__menu p-2">
+                                                            @foreach ($navbarMenu['kategori'] as $p)
+                                                                <li class="text-black px-3"><a href="{{ route('front.post.kategori', $p->slug) }}"><span>{{ $p->nama }}</span></a></li>
                                                             @endforeach
-                                                        @endif
-                                                    </ul>
+                                                        </ul>
+                                                    @endif
                                                 </li>
-                                                <li class="lavel-1 p-0"><a href="{{ route('front.ranap') }}"><span>Cek Kamar & Tarif</span></a></li>
-                                                <li class="lavel-1 p-0 with--drop slide-dropdown"><a href="#"><span>Informasi</span></a>
-                                                    <ul class="dropdown__menu p-2">
-                                                        <li class="text-black px-3"><a href="{{ route('front.informasi') }}"><span>Informasi</span></a></li>
-                                                        <li class="text-black px-3"><a href="{{ route('front.agenda') }}"><span>Agenda</span></a></li>
-                                                        <li class="text-black px-3"><a href="{{ route('front.artikel') }}"><span>Artikel</span></a></li>
-                                                        <li class="text-black px-3"><a href="{{ route('front.promo') }}"><span>Promo</span></a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="lavel-1 p-0"><a href="{{ route('front.gallery') }}"><span>Gallery</span></a></li>
                                                 <li class="lavel-1 p-0"><a href="{{ route('cari') }}" title="pencarian"><span><i class="fa fa-search fs-4"></i></span></a></li>
                                             </ul>
                                         </nav>
@@ -144,35 +146,15 @@
                 <div class="menu-content">
                     <ul class="menulist object-custom-menu">
                         <li class="lavel-1"><a href="/"><span>Home</span></a></li>
-                        <li class="has-mega-menu"><a href="{{ route('front.profil') }}"><span>Profil</span></a>
+                        <li class="has-mega-menu"><a href=""><span>Profil</span></a>
                             @if ($navbarMenu['profil'])
                                 <ul class="object-submenu">
                                     @foreach ($navbarMenu['profil'] as $p)
-                                        <li><a href="{{ route('front.profil.baca', $p->slug) }}"><span>{{ $p->nama }}</span></a></li>
+                                        <li><a href="{{ route('front.post.baca', $p->slug) }}"><span>{{ $p->nama }}</span></a></li>
                                     @endforeach
                                 </ul>
                             @endif
                         </li>
-                        <li class="has-mega-menu"><a href="{{ route('front.pelayanan') }}"><span>Pelayanan</span></a>
-                            <ul class="object-submenu">
-                                @if ($navbarMenu['layanan'])
-                                    @foreach ($navbarMenu['layanan'] as $p)
-                                        <li><a href="{{ $p->url }}"><span>{{ $p->nama }}</span></a></li>
-                                    @endforeach
-                                @endif
-                            </ul>
-                        </li>
-                        <li class="lavel-1"><a href="{{ route('front.ranap') }}"><span>Cek Kamar & Tarif</span></a></li>
-                        <li class="has-mega-menu"><a href="#"><span>Informasi</span></a>
-                            <ul class="object-submenu">
-                                <li><a href="{{ route('front.informasi') }}"><span>Informasi</span></a></li>
-                                <li><a href="{{ route('front.agenda') }}"><span>Agenda</span></a></li>
-                                <li><a href="{{ route('front.artikel') }}"><span>Artikel</span></a></li>
-                                <li><a href="{{ route('front.promo') }}"><span>Promo</span></a></li>
-
-                            </ul>
-                        </li>
-                        <li class="lavel-1"><a href="{{ route('front.gallery') }}"><span>Gallery</span></a></li>
                         <li class="lavel-1"><a href="{{ route('cari') }}"><span><i class="fa fa-search"></i> Pencarian</span></a></li>
                     </ul>
                 </div>
@@ -214,12 +196,6 @@
                         <div class="col-6 col-lg-3 wow fadeInUp" data-wow-duration="1s">
                             <h3 class="text-rsia ">Tentang Kami</h3>
                             <ul class="list-unstyled">
-                                <li class="p-0 pb-1"><a class="text-rsia" href="{{ route('front.ranap') }}">Cek Kamar & Tarif</a></li>
-                                <li class="p-0 pb-1"><a class="text-rsia" href="{{ route('front.pelayanan') }}">Pelayanan</a></li>
-                                <li class="p-0 pb-1"><a class="text-rsia" href="{{ route('front.promo') }}">Promo</a></li>
-                                <li class="p-0 pb-1"><a class="text-rsia" href="{{ route('front.agenda') }}">Agenda</a></li>
-                                <li class="p-0 pb-1"><a class="text-rsia" href="{{ route('front.dokter') }}">Dokter</a></li>
-                                <li class="p-0 pb-1"><a class="text-rsia" href="{{ route('front.profil') }}">Profil</a></li>
                                 <li class="p-0 pb-1"><a class="text-rsia" href="{{ route('cari') }}">Pencarian</a></li>
                             </ul>
                         </div>

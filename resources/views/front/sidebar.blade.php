@@ -20,31 +20,7 @@
                     <figure class="category-image" data-bg-image="{{ $banner }}">
                         <img src="{{ $banner }}" alt="Category Box">
                     </figure>
-                    <h5 class="mb-0 fw-normal"><a href="{{ route('front.ranap') }}">Cek Kamar & Tarif</a></h5>
-                </div>
-                <div class="category mb-30" data-overlay="5">
-                    <figure class="category-image" data-bg-image="{{ $banner }}">
-                        <img src="{{ $banner }}" alt="Category Box">
-                    </figure>
-                    <h5 class="mb-0 fw-normal"><a href="{{ route('front.rajal') }}">Rawat Jalan</a></h5>
-                </div>
-                <div class="category mb-30" data-overlay="5">
-                    <figure class="category-image" data-bg-image="{{ $banner }}">
-                        <img src="{{ $banner }}" alt="Category Box">
-                    </figure>
-                    <h5 class="mb-0 fw-normal"><a href="{{ route('front.promo') }}">Promo</a></h5>
-                </div>
-                <div class="category mb-30" data-overlay="5">
-                    <figure class="category-image" data-bg-image="{{ $banner }}">
-                        <img src="{{ $banner }}" alt="Category Box">
-                    </figure>
-                    <h5 class="mb-0 fw-normal"><a href="{{ route('front.agenda') }}">Agenda</a></h5>
-                </div>
-                <div class="category mb-30" data-overlay="5">
-                    <figure class="category-image" data-bg-image="{{ $banner }}">
-                        <img src="{{ $banner }}" alt="Category Box">
-                    </figure>
-                    <h5 class="mb-0 fw-normal"><a href="{{ route('front.artikel') }}">Artikel</a></h5>
+                    <h5 class="mb-0 fw-normal"><a href="{{ route('front.post.index') }}">Artikel</a></h5>
                 </div>
             </div>
         </div>

@@ -12,32 +12,11 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['register' => false, 'reset' => false]);
 
+Route::get('/', [FrontController::class, 'index'])->name('index');
 Route::as('front.')->group(function () {
-    Route::get('/', [FrontController::class, 'index'])->name('front.index');
-    Route::get('/profil', [FrontController::class, 'profil'])->name('profil');
-    Route::get('/profil/{profil}', [FrontController::class, 'profil'])->name('profil.baca');
-    Route::get('/pelayanan', [FrontController::class, 'pelayanan'])->name('pelayanan');
-    Route::get('/pelayanan/{pelayanan}', [FrontController::class, 'pelayanan'])->name('pelayanan.baca');
-    Route::get('/rawat-jalan', [FrontController::class, 'pelayananRajal'])->name('rajal');
-    Route::get('/rawat-jalan/{poli}', [FrontController::class, 'pelayananRajal'])->name('rajal.baca');
-    Route::get('/rawat-inap', [FrontController::class, 'pelayananRanap'])->name('ranap');
-    Route::get('/rawat-inap/{poli}', [FrontController::class, 'pelayananRanap'])->name('ranap.baca');
-    Route::get('/agenda', [FrontController::class, 'agenda'])->name('agenda');
-    Route::get('/agenda/{agenda}', [FrontController::class, 'agenda'])->name('agenda.baca');
-    Route::get('/artikel', [FrontController::class, 'artikel'])->name('artikel');
-    Route::get('/artikel/{artikel}', [FrontController::class, 'artikel'])->name('artikel.baca');
-    Route::get('/promo', [FrontController::class, 'promo'])->name('promo');
-    Route::get('/promo/{promo}', [FrontController::class, 'promo'])->name('promo.baca');
-    Route::get('/gallery', [FrontController::class, 'gallery'])->name('gallery');
-    Route::get('/gallery/{gallery}', [FrontController::class, 'gallery'])->name('gallery.baca');
-    Route::get('/informasi', [FrontController::class, 'informasi'])->name('informasi');
-    Route::get('/informasi/{informasi}', [FrontController::class, 'informasi'])->name('informasi.baca');
-    Route::get('/banner', [FrontController::class, 'banner'])->name('banner');
-    Route::get('/banner/{banner}', [FrontController::class, 'banner'])->name('banner.baca');
-    Route::get('/pamflet', [FrontController::class, 'pamflet'])->name('pamflet');
-    Route::get('/pamflet/{pamflet}', [FrontController::class, 'pamflet'])->name('pamflet.baca');
-    Route::get('/dokter', [FrontController::class, 'dokter'])->name('dokter');
-    Route::get('/dokter/{dokter}', [FrontController::class, 'dokter'])->name('dokter.baca');
+    Route::get('/post', [FrontController::class, 'post'])->name('post.index');
+    Route::get('/post/{slug}', [FrontController::class, 'post'])->name('post.baca');
+    Route::get('/kategori/{slug}', [FrontController::class, 'kategori'])->name('post.kategori');
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -55,7 +34,7 @@ Route::middleware(['auth', 'role:superadmin'])->group(function () {
     Route::resource('identitas', IdentitasController::class);
 });
 
-Route::middleware(['auth', 'role:superadmin'])->group(function () {
+Route::prefix('admin')->middleware(['auth', 'role:superadmin'])->group(function () {
     Route::resource('post', PostController::class);
     Route::resource('category', CategoryController::class);
 });

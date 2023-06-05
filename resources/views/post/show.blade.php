@@ -31,6 +31,10 @@
                     </div>
                     <div class="card-body">
                         <div class="mb-3">
+                            <div class="fw-bold">Kategori</div>
+                            <div>{{ $post->kategori->nama }}</div>
+                        </div>
+                        <div class="mb-3">
                             <div class="fw-bold">Judul</div>
                             <div>{{ $post->judul }}</div>
                         </div>
@@ -51,7 +55,7 @@
                     <div class="card-body">
                         @if ($post->gambar)
                             <div class="row justify-content-center mb-5">
-                                <img src="{{ $post->gambar ? asset('storage/post/' . $post->gambar) : '' }}" class="img-thumbnail rounded">
+                                <img src="{{ $post->url_gambar }}" class="rounded">
                             </div>
                         @endif
                         {!! $post->konten !!}
