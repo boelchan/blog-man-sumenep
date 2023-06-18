@@ -35,6 +35,14 @@
         ]
     },
     {
+        "title": "Layanan",
+        "icon": "layout-2",
+        "route": "service.index",
+        "role": [
+            "superadmin"
+        ]
+    },
+    {
         "title": "Sistem",
         "icon": "settings",
         "role": [

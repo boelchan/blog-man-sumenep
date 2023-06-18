@@ -27,7 +27,7 @@ class PostSeeder extends Seeder
             ],
             [
                 'uuid' => $faker->uuid(),
-                'kategori_id' => '2',
+                'kategori_id' => '3',
                 'judul' => 'banner',
                 'slug' => Str::slug('banner'),
                 'konten' => $faker->paragraph(50),
@@ -35,7 +35,7 @@ class PostSeeder extends Seeder
             ],
             [
                 'uuid' => $faker->uuid(),
-                'kategori_id' => '3',
+                'kategori_id' => '2',
                 'judul' => 'pamflet',
                 'slug' => Str::slug('pamflet'),
                 'konten' => $faker->paragraph(50),

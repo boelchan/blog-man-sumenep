@@ -20,7 +20,7 @@ class IdentitySeeder extends Seeder
                 [
                     'nama' => 'Logo',
                     'slug' => 'logo',
-                    'value' => 'logo-0.38290900 1685864109.jpg',
+                    'value' => 'logo-0.38290900 1685864109.png',
                     'tipe' => 'website',
                 ], [
                     'nama' => 'Gambar Breadcrumb ',

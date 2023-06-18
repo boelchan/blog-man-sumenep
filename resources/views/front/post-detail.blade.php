@@ -12,7 +12,7 @@
                             <!-- Start Thumbnail -->
                             @if ($post->gambar)
                                 <div class="mb-60 text-center">
-                                    <img  src="{{ $post->url_gambar }}" alt="gambar" style="max-height: 500px">
+                                    <img  src="{{ $post->gambar_url }}" alt="gambar" style="max-height: 500px">
                                 </div>
                             @endif
                             <!-- Start Title -->

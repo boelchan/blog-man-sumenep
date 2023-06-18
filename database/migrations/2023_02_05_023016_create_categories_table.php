@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('slug');
+            $table->integer('is_primary')->default(0);
             $table->timestamps();
         });
     }

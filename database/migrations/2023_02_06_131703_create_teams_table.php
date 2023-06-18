@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
             $table->uuid();
+            $table->string('meta_keywords')->nullable();
+            $table->string('meta_description')->nullable();
             $table->string('gambar')->nullable();
             $table->string('nama');
             $table->string('slug');

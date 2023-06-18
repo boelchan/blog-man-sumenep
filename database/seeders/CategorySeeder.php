@@ -15,12 +15,12 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::insert([
-            ['nama' => 'Profil', 'slug' => 'Profil'],
-            ['nama' => 'Pamflet', 'slug' => 'pamflet'],
-            ['nama' => 'Banner', 'slug' => 'banner'],
-            ['nama' => 'Informasi', 'slug' => 'informasi'],
-            ['nama' => 'Artikel', 'slug' => 'artikel'],
-            ['nama' => 'Agenda', 'slug' => 'agenda'],
+            ['nama' => 'Profil', 'slug' => 'Profil', 'is_primary'=> 1],
+            ['nama' => 'Pamflet', 'slug' => 'pamflet', 'is_primary'=> 1],
+            ['nama' => 'Banner', 'slug' => 'banner', 'is_primary'=> 1],
+            ['nama' => 'Informasi', 'slug' => 'informasi', 'is_primary'=> 1],
+            ['nama' => 'Artikel', 'slug' => 'artikel', 'is_primary'=> 1],
+            ['nama' => 'Agenda', 'slug' => 'agenda', 'is_primary'=> 1],
         ]);
     }
 }

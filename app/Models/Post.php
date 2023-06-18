@@ -33,7 +33,7 @@ class Post extends Model implements Searchable
             $model->slug = (string) Str::slug($model->judul);
 
             if ($file = request()->file('gambar')) {
-                $fileName = microtime().'.'.$file->extension();
+                $fileName = microtime() . '.' . $file->extension();
                 $file->move('storage/gambar/', $fileName);
 
                 $model->gambar = $fileName;
@@ -51,9 +51,9 @@ class Post extends Model implements Searchable
         return route('front.post.baca', $this->slug);
     }
 
-    public function getUrlGambarAttribute()
+    public function getGambarUrlAttribute()
     {
-        return asset("storage/gambar/$this->gambar");
+        return $this->gambar != '' ? asset("storage/gambar/$this->gambar") : asset('static/sampel.jpg');
     }
 
     public function getPublishAtLabelAttribute()

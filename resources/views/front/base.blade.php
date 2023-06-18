@@ -190,8 +190,7 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <iframe class="pe-lg-5 rounded-3 mt-2 wow fadeInUp" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.7523989679835!2d113.47686641392323!3d-7.154600494834015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd77dfd4c078243%3A0xf2ccbabae7cd6978!2sRSIA%20Siti%20Aisyah!5e0!3m2!1sid!2sid!4v1679054834575!5m2!1sid!2sid" width="100%" height="190px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe class=" rounded-3 mt-2 wow fadeInUp" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.05590126829!2d113.86641047417714!3d-7.0027000685862175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd9e5d2dce40611%3A0x8a78862419c24e76!2sMA%20Negeri%20Sumenep!5e0!3m2!1sid!2sid!4v1687077558943!5m2!1sid!2sid" width="100%" height="190px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                         <div class="col-6 col-lg-3 wow fadeInUp" data-wow-duration="1s">
                             <h3 class="text-rsia ">Tentang Kami</h3>

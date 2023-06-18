@@ -12,7 +12,7 @@ class Service extends Model implements Searchable
 {
     use HasFactory;
 
-    public $searchableType = 'Pelayanan';
+    public $searchableType = 'Layanan';
 
     protected $guarded = ['id'];
 
@@ -34,30 +34,15 @@ class Service extends Model implements Searchable
 
             if ($file = request()->file('icon')) {
                 $fileName = microtime().'.'.$file->extension();
-                $file->move('storage/pelayanan/icon/', $fileName);
+                $file->move('storage/layanan/', $fileName);
 
                 $model->icon = $fileName;
-            }
-            if ($file = request()->file('gambar')) {
-                $fileName = microtime().'.'.$file->extension();
-                $file->move('storage/pelayanan/', $fileName);
-
-                $model->gambar = $fileName;
             }
         });
     }
 
-    public function getUrlGambarAttribute()
+    public function getIconUrlAttribute()
     {
-        return $this->gambar != '' ? asset("storage/pelayanan/$this->gambar") : false;
-    }
-
-    public function getUrlAttribute()
-    {
-        return match ($this->id) {
-            1 => route('front.rajal'),
-            2 => route('front.ranap'),
-            default => route('front.pelayanan.baca', $this->slug),
-        };
+        return $this->icon != '' ? asset("storage/layanan/$this->icon") : false;
     }
 }

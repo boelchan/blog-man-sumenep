@@ -5,6 +5,7 @@ use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IdentitasController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -37,6 +38,7 @@ Route::middleware(['auth', 'role:superadmin'])->group(function () {
 Route::prefix('admin')->middleware(['auth', 'role:superadmin'])->group(function () {
     Route::resource('post', PostController::class);
     Route::resource('category', CategoryController::class);
+    Route::resource('service', ServiceController::class);
 });
 
 Route::post('summernote-upload-image', function () {

@@ -22,10 +22,11 @@
                                     </div>
                                     <x-form-select name="kategori_id" label="Kategori" :options="$kategoriOption" class="mb-2"/>
                                     <x-form-textarea name="judul" label="Judul" class="mb-2 h-auto" rows="3" />
+                                        <div class=" bg-secondary-lt p-3 mb-2 rounded-2">
                                     <x-form-textarea name="meta_keywords" label="Meta Keyword" class="mb-2 h-auto" rows="3" />
                                     <x-form-textarea name="meta_description" label="Meta Deskripsi" class="mb-2 h-auto" rows="3" />
-
-                                    <div x-data="{ open: true }" class=" bg-secondary-lt p-3 mb-2 border">
+                                        </div>
+                                    <div x-data="{ open: true }" class=" bg-secondary-lt p-3 mb-2 rounded-3">
                                         <x-form-group name="publish" label="Publish" inline class="mb-2">
                                             <x-form-radio name="publish" value="ya" checked label="Ya" x-on:click="open = true" />
                                             <x-form-radio name="publish" value="tidak" label="Pending" x-on:click="open = false" />

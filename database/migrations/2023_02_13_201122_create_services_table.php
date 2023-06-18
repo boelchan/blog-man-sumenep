@@ -18,9 +18,10 @@ return new class extends Migration
             $table->uuid();
             $table->string('nama');
             $table->string('slug');
-            $table->string('meta')->nullable();
-            $table->string('gambar')->nullable();
-            $table->string('konten', 15000)->nullable();
+            $table->string('meta_keywords')->nullable();
+            $table->string('meta_description')->nullable();
+            $table->string('icon')->nullable();
+            $table->text('konten')->nullable();
             $table->string('publish', 5)->default('ya');
             $table->timestamps();
         });

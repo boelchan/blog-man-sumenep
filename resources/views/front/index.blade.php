@@ -1,7 +1,7 @@
 @extends('front.base')
 
 @section('content')
-    <section class="position-relative ptb-65 ptb-sm-65 ptb-md-65">
+    <section class="position-relative ptb-70 ptb-sm-70 ptb-md-70">
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 @forelse ($slider as $b)
@@ -14,7 +14,7 @@
                 @forelse ($slider as $b)
                     <div class="carousel-item @if ($loop->first) active @endif">
                         <a href="{{ $b->url }}">
-                            <img src="{{ asset('storage/gambar/' . $b->gambar) }}" class="d-block w-100" alt="..." style="object-fit: cover; max-height:600px">
+                            <img src="{{ $b->gambar_url }}" class="d-block w-100" alt="..." style="object-fit: cover; max-height:600px">
                             <div class="carousel-caption d-none d-md-block">
                                 <label class="blur rounded-pill px-3 py-1">
                                     {{ $b->judul }}
@@ -44,9 +44,9 @@
                 <!-- Start Single Gallery -->
                 @foreach ($pamflet as $pf)
                     <div class="col-md-4 col-6 p-1">
-                        <a class="gallery wow fadeInUp" data-fancybox="gallery" href="{{ asset('storage/gambar/' . $pf->gambar) }}">
+                        <a class="gallery wow fadeInUp" data-fancybox="gallery" href="{{ $pf->gambar_url }}">
                             <div class="thumb">
-                                <img class="rounded-3" src="{{ asset('storage/gambar/' . $pf->gambar) }}" alt="Gallery Images">
+                                <img class="rounded-3" src="{{ $pf->gambar_url }}" alt="Gallery Images">
                             </div>
                             <div class="hover-overlay">
                                 <div class="inner">

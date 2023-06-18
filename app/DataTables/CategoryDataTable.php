@@ -21,7 +21,7 @@ class CategoryDataTable extends DataTable
         }
 
         return $dataTable->editColumn('action', function ($query) {
-            if (! in_array($query->id, [1, 2, 3, 4, 5])) {
+            if (! $query->is_primary) {
                 return view('components.button.edit', ['action' => route('category.edit', $query->id)]).
                 view('components.button.destroy', ['action' => route('category.destroy', $query->id), 'label' => $query->nama, 'target' => 'category-table']);
             }
@@ -30,7 +30,7 @@ class CategoryDataTable extends DataTable
 
     public function query(Category $model)
     {
-        return $model->newQuery()->orderBy('id', 'asc');
+        return $model->newQuery()->orderBy('is_primary', 'desc')->orderBy('nama', 'asc');
     }
 
     public function html()
@@ -38,6 +38,7 @@ class CategoryDataTable extends DataTable
         return $this->builder()
             ->setTableId('category-table')
             ->columns($this->getColumns())
+            ->ordering(false)
             ->ajax([
                 'data' => 'function(d) { 
                     d.nama = $("#nama").val();
