@@ -43,6 +43,14 @@
         ]
     },
     {
+        "title": "Alumni",
+        "icon": "users",
+        "route": "alumni.index",
+        "role": [
+            "superadmin"
+        ]
+    },
+    {
         "title": "Sistem",
         "icon": "settings",
         "role": [

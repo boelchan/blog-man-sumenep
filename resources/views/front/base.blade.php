@@ -110,6 +110,7 @@
                                                         </ul>
                                                     @endif
                                                 </li>
+                                                <li class="lavel-1 p-0"><a href="/"><span>Alumni</span></a></li>
                                                 <li class="lavel-1 p-0"><a href="{{ route('cari') }}" title="pencarian"><span><i class="fa fa-search fs-4"></i></span></a></li>
                                             </ul>
                                         </nav>
@@ -155,6 +156,7 @@
                                 </ul>
                             @endif
                         </li>
+                        <li class="lavel-1"><a href="{{ route('cari') }}"><span>Alumni</span></a></li>
                         <li class="lavel-1"><a href="{{ route('cari') }}"><span><i class="fa fa-search"></i> Pencarian</span></a></li>
                     </ul>
                 </div>

@@ -33,7 +33,7 @@ class Post extends Model implements Searchable
             $model->slug = (string) Str::slug($model->judul);
 
             if ($file = request()->file('gambar')) {
-                $fileName = microtime() . '.' . $file->extension();
+                $fileName = microtime().'.'.$file->extension();
                 $file->move('storage/gambar/', $fileName);
 
                 $model->gambar = $fileName;

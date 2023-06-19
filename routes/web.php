@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeController;
@@ -39,6 +40,7 @@ Route::prefix('admin')->middleware(['auth', 'role:superadmin'])->group(function 
     Route::resource('post', PostController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('service', ServiceController::class);
+    Route::resource('alumni', AlumniController::class);
 });
 
 Route::post('summernote-upload-image', function () {

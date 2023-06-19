@@ -62,7 +62,7 @@ class ServiceController extends Controller
         $title = $this->title;
         $breadcrumbs = [['url' => route('service.index'), 'title' => $title], ['url' => '', 'title' => 'Edit']];
 
-        return view('service.edit', compact('service', 'title','breadcrumbs'));
+        return view('service.edit', compact('service', 'title', 'breadcrumbs'));
     }
 
     public function update(Request $request, Service $service)
