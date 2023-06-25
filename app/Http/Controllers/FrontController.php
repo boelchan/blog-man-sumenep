@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Enum\CategoryEnum;
+use App\Models\Alumni;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Profile;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Spatie\Searchable\Search;
@@ -30,6 +32,7 @@ class FrontController extends Controller
 
         $pamflet = Post::where('kategori_id', CategoryEnum::PAMFLET)->where('publish', 'ya')->orderBy('publish_at', 'desc')->orderBy('updated_at', 'desc')->get()->take(6);
         $tentangKami = Profile::find(1);
+        $layanan = Service::all();
 
         $meta = [
             'title' => 'Beranda',
@@ -39,42 +42,28 @@ class FrontController extends Controller
             'image' => setting('logo'),
         ];
 
-        return view('front.index', compact('navbarMenu', 'slider', 'tentangKami', 'pamflet', 'meta'));
+        return view('front.index', compact('navbarMenu', 'slider', 'tentangKami', 'pamflet', 'meta', 'layanan'));
     }
 
     public function post($slug = '')
     {
         $navbarMenu = $this->navbarMenu();
 
-        if ($slug) {
-            $post = Post::where('slug', $slug)->where('publish', 'ya')->first();
+        $post = Post::where('slug', $slug)->where('publish', 'ya')->first();
 
-            if (! $post) {
-                return redirect()->route('front.post.index');
-            }
-
-            $meta = [
-                'title' => $post->judul,
-                'category' => $post->kategori->nama,
-                'description' => ($post->meta_description != '' ? $post->meta_description : Str::limit($post->konten, 250)),
-                'keywords' => $post->meta_keywords,
-                'image' => $post->url_gambar,
-            ];
-
-            return view('front.post-detail', compact('navbarMenu', 'post', 'meta'));
-        } else {
-            $post = Post::where('publish', 'ya')->orderBy('publish_at', 'desc')->orderBy('updated_at', 'desc')->paginate(15);
-
-            $meta = [
-                'title' => 'Post',
-                'category' => 'Agenda',
-                'description' => '',
-                'keywords' => 'Agenda, Kegiatan',
-                'image' => setting('logo'),
-            ];
-
-            return view('front.post', compact('navbarMenu', 'post', 'meta'));
+        if (! $post) {
+            return redirect()->route('index');
         }
+
+        $meta = [
+            'title' => $post->judul,
+            'category' => $post->kategori->nama,
+            'description' => ($post->meta_description != '' ? $post->meta_description : Str::limit($post->konten, 250)),
+            'keywords' => $post->meta_keywords,
+            'image' => $post->gambar_url,
+        ];
+
+        return view('front.post-detail', compact('navbarMenu', 'post', 'meta'));
     }
 
     public function kategori($kategoriSlug)
@@ -82,13 +71,22 @@ class FrontController extends Controller
         $navbarMenu = $this->navbarMenu();
 
         $kategori = Category::firstWhere('slug', $kategoriSlug);
-        $post = Post::where('kategori_id', $kategori->id)->where('publish', 'ya')->orderBy('publish_at', 'desc')->orderBy('updated_at', 'desc')->paginate(15);
+
+        if (! $kategori) {
+            return redirect()->route('index');
+        }
+
+        $post = Post::where('kategori_id', $kategori->id)
+            ->where('publish', 'ya')
+            ->orderBy('publish_at', 'desc')
+            ->orderBy('updated_at', 'desc')
+            ->paginate(15);
 
         $meta = [
             'title' => 'Post',
             'category' => $kategori->nama,
             'description' => $kategori->nama,
-            'keywords' => 'Agenda, Kegiatan',
+            'keywords' => 'Agenda, Kegiatan, '.$kategori->nama,
             'image' => setting('logo'),
         ];
 
@@ -102,7 +100,7 @@ class FrontController extends Controller
         $meta = [
             'title' => 'Pencarian',
             'category' => 'Pencarian',
-            'description' => 'pencarian  RSIA Siti Aisyah Pamekasan',
+            'description' => 'pencarian',
             'keywords' => 'pencarian, search, cari',
             'image' => setting('logo'),
         ];
@@ -115,4 +113,78 @@ class FrontController extends Controller
 
         return view('front.pencarian', compact('navbarMenu', 'q', 'searchResults', 'meta'));
     }
+
+    // alumni
+    public function alumni($id = '')
+    {
+        $navbarMenu = $this->navbarMenu();
+
+        if ($id) {
+            $post = Alumni::findOrFail($id);
+
+            if (! $post) {
+                return redirect()->route('index');
+            }
+
+            $meta = [
+                'title' => $post->nama,
+                'category' => 'Detail Alumni',
+                'description' => 'alumni',
+                'keywords' => $post->meta_keywords,
+                'image' => $post->foto_url,
+            ];
+
+            return view('front.alumni.show', compact('navbarMenu', 'post', 'meta'));
+        } else {
+            $post = Alumni::orderBy('updated_at', 'desc')
+                ->when(request()->tahun_lulus, function ($q) {
+                    $q->where('tahun_lulus', request()->tahun_lulus);
+                })
+                ->when(request()->jurusan, function ($q) {
+                    $q->where('jurusan', request()->jurusan);
+                });
+
+            $postCount = $post->count();
+            $post = $post->paginate(16);
+
+            $meta = [
+                'title' => 'Alumni',
+                'category' => 'Alumni',
+                'description' => 'alumni',
+                'keywords' => 'alumni',
+                'image' => setting('logo'),
+            ];
+
+            return view('front.alumni.index', compact('navbarMenu', 'meta', 'post', 'postCount'));
+        }
+    }
+
+    public function alumniCreate()
+    {
+        $navbarMenu = $this->navbarMenu();
+        $meta = [
+            'title' => 'Alumni',
+            'category' => 'Tambah Alumni Baru',
+            'description' => 'alumni',
+            'keywords' => 'alumni',
+            'image' => setting('logo'),
+        ];
+        return view('front.alumni.create', compact('navbarMenu', 'meta'));
+    }
+
+    public function alumniStore(Request $request)
+    {
+        $request->validate([
+            'foto' => 'mimes:jpg,jpeg,png|max:1000|required',
+            'nama' => 'required|max:250',
+            'tahun_lulus' => 'required',
+            'jurusan' => 'required',
+            'domisili' => 'required',
+        ]);
+
+        $id = Alumni::create($request->all());
+
+        return redirect()->route('front.alumni.baca', $id);
+    }
+
 }

@@ -11,7 +11,7 @@
                         <div class="blog-post blog-classic common-blog-post">
                             <div class="blog-imgs" style="height: 200px">
                                 <a class="blog-img" href="{{ $p->url }}">
-                                    <img src="{{ asset('storage/gambar/' . $p->gambar) }}" alt="Blog imgs" style="height: 200px!important; object-fit: cover; ">
+                                    <img src="{{ $p->gambar_url }}" alt="Blog imgs" style="height: 200px!important; object-fit: cover; ">
                                 </a>
                             </div>
                             <div class="blog-inner p-3" style="height: 110px">

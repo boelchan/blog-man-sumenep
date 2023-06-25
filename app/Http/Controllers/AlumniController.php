@@ -34,7 +34,7 @@ class AlumniController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'icon' => 'mimes:jpg,jpeg,png|max:1000',
+            'foto' => 'mimes:jpg,jpeg,png|max:1000|required',
             'nama' => 'required|max:250',
             'tahun_lulus' => 'required',
             'jurusan' => 'required',
@@ -65,7 +65,7 @@ class AlumniController extends Controller
     public function update(Request $request, Alumni $alumnus)
     {
         $request->validate([
-            'icon' => 'mimes:jpg,jpeg,png|max:1000',
+            'foto' => 'mimes:jpg,jpeg,png|max:1000',
             'nama' => 'required|max:250',
             'tahun_lulus' => 'required',
             'jurusan' => 'required',

@@ -40,17 +40,22 @@
     </section>
     <section class="position-relative ptb-80 ptb-sm-30 ptb-md-60">
         <div class="container">
+            <div class="row justify-content-center">
+                <div class="text-center mb-4 fw-normal">
+                    <h3>Pamflet</h3>
+                </div>
+            </div>
             <div class="row ">
                 <!-- Start Single Gallery -->
                 @foreach ($pamflet as $pf)
                     <div class="col-md-4 col-6 p-1">
                         <a class="gallery wow fadeInUp" data-fancybox="gallery" href="{{ $pf->gambar_url }}">
                             <div class="thumb">
-                                <img class="rounded-3" src="{{ $pf->gambar_url }}" alt="Gallery Images">
+                                <img class="rounded-3" src="{{ $pf->gambar_url }}" alt="pamflet Images">
                             </div>
                             <div class="hover-overlay">
                                 <div class="inner">
-                                    <span class="ti-plus"></span>
+                                    <span class="ti ti-plus"></span>
                                 </div>
                             </div>
                         </a>
@@ -61,6 +66,4 @@
         </div>
         <!-- End Gallery Area -->
     </section>
-
-
 @endsection

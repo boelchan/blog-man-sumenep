@@ -40,3 +40,15 @@ function tanggalJam($value)
 {
     return Carbon::parse($value)->format('d/m/Y H:i');
 }
+
+function tahunOption()
+{
+    $tahunAwal = 1800;
+    $tahunSekarang = date('Y');
+    $tahunOption = [];
+    for ($i = $tahunSekarang; $i >= $tahunAwal; $i--) {
+        $tahunOption[$i] = (string) $i;
+    }
+
+    return $tahunOption;
+}

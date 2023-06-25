@@ -34,4 +34,9 @@ class Alumni extends Model
     {
         return $this->foto != '' ? asset("storage/alumni/$this->foto") : asset('static/sampel.jpg');
     }
+
+    public function getUrlAttribute()
+    {
+        return route('front.alumni.baca', $this->id);
+    }
 }

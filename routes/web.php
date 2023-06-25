@@ -19,6 +19,10 @@ Route::as('front.')->group(function () {
     Route::get('/post', [FrontController::class, 'post'])->name('post.index');
     Route::get('/post/{slug}', [FrontController::class, 'post'])->name('post.baca');
     Route::get('/kategori/{slug}', [FrontController::class, 'kategori'])->name('post.kategori');
+    Route::get('/alumni', [FrontController::class, 'alumni'])->name('alumni.index');
+    Route::get('/alumni/tambah', [FrontController::class, 'alumniCreate'])->name('alumni.create');
+    Route::post('/alumni/simpan', [FrontController::class, 'alumniStore'])->name('alumni.store');
+    Route::get('/alumni/{id}', [FrontController::class, 'alumni'])->name('alumni.baca');
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -45,10 +49,10 @@ Route::prefix('admin')->middleware(['auth', 'role:superadmin'])->group(function 
 
 Route::post('summernote-upload-image', function () {
     $file = request()->image;
-    $fileName = microtime().'.'.$file->extension();
+    $fileName = microtime() . '.' . $file->extension();
     $file->move('storage/summernote/', $fileName);
 
-    return asset('storage/summernote/'.$fileName);
+    return asset('storage/summernote/' . $fileName);
 })->name('summernote.upload.image');
 
 Route::get('cari', [FrontController::class, 'cari'])->name('cari');
