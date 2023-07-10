@@ -7,7 +7,7 @@
                     <form action="{{ route('cari') }}" method="get">
                         <div class="form-group">
                             <input type="text" maxlength="200" name="search" class="form-control" placeholder="cari pengumuman, layanan, artikel">
-                            <button type="submit" class="submit-search" aria-label="Search"><i class="ti-search"></i></button>
+                            <button type="submit" class="submit-search" aria-label="Search"><i class="ti ti-search"></i></button>
                         </div>
                     </form>
                 </div>

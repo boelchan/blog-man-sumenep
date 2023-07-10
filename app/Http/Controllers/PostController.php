@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\PostDatatable;
+use App\DataTables\PostDataTable;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;

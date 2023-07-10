@@ -40,7 +40,7 @@ Route::middleware(['auth', 'role:superadmin'])->group(function () {
     Route::resource('identitas', IdentitasController::class);
 });
 
-Route::prefix('admin')->middleware(['auth', 'role:superadmin'])->group(function () {
+Route::prefix('admin')->middleware(['auth', 'role:superadmin|operator'])->group(function () {
     Route::resource('post', PostController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('service', ServiceController::class);

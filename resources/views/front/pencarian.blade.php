@@ -13,7 +13,7 @@
                                 <form action="{{ route('cari') }}" method="get">
                                     <div class="input-group ">
                                         <input type="text" maxlength="200" name="search" value="{{ $q }}" class="form-control border-primary" placeholder="cari dokter, poli, artikel">
-                                        <button type="submit" class="btn btn-primary btn-sm" aria-label="Search"><i class="ti-search"></i> Cari</button>
+                                        <button type="submit" class="btn btn-primary btn-sm" aria-label="Search"><i class="ti ti-search"></i> Cari</button>
                                     </div>
                                 </form>
                             {{-- </div> --}}

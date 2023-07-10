@@ -152,7 +152,7 @@
                             @if ($navbarMenu['profil'])
                                 <ul class="object-submenu">
                                     @foreach ($navbarMenu['profil'] as $p)
-                                        <li><a href="{{ route('front.post.baca', $p->slug) }}"><span>{{ $p->nama }}</span></a></li>
+                                        <li><a href="{{ route('front.post.baca', $p->slug) }}"><span>{{ $p->judul }}</span></a></li>
                                     @endforeach
                                 </ul>
                             @endif
