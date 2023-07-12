@@ -32,7 +32,7 @@ class FrontController extends Controller
 
         $pamflet = Post::where('kategori_id', CategoryEnum::PAMFLET)->where('publish', 'ya')->orderBy('publish_at', 'desc')->orderBy('updated_at', 'desc')->get()->take(6);
         $tentangKami = Profile::find(1);
-        $layanan = Service::all();
+        $fasilitas = Service::all();
 
         $meta = [
             'title' => 'Beranda',
@@ -42,7 +42,7 @@ class FrontController extends Controller
             'image' => setting('logo'),
         ];
 
-        return view('front.index', compact('navbarMenu', 'slider', 'tentangKami', 'pamflet', 'meta', 'layanan'));
+        return view('front.index', compact('navbarMenu', 'slider', 'tentangKami', 'pamflet', 'meta', 'fasilitas'));
     }
 
     public function post($slug = '')

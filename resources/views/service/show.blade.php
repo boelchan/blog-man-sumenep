@@ -26,7 +26,7 @@
                     </div>
                     <div class="card-body">
                         <div class="mb-3">
-                            <div class="fw-bold">Nama Layanan</div>
+                            <div class="fw-bold">Nama {{ $title }}</div>
                             <div>{{ $service->nama }}</div>
                         </div>
                         <div class="mb-3">
@@ -37,19 +37,21 @@
                             <div class="fw-bold">Meta Description</div>
                             <div>{{ $service->meta_description ?? '-' }}</div>
                         </div>
-
+                        <div class="mb-3">
+                            <div class="fw-bold">Icon</div>
+                            @if ($service->icon)
+                                <div class="row justify-content-center">
+                                    <img src="{{ $service->icon_url }}" class="rounded">
+                                </div>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        @if ($service->icon)
-                            <div class="row justify-content-center mb-5">
-                                <img src="{{ $service->icon_url }}" class="rounded">
-                            </div>
-                        @endif
-                        {!! $service->konten !!}
+                        {!! $service->konten ?? 'Belum ada konten' !!}
                     </div>
                 </div>
             </div>

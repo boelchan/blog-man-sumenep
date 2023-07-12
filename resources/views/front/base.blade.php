@@ -171,7 +171,7 @@
         @yield('content')
 
         <!-- footer part start -->
-        <footer class="footer-part product-footer single_image-wrapper text-rsia">
+        <footer class="footer-part product-footer single_image-wrapper main-color">
             <div class="image-wrapper  wow fadeInUp" data-wow-duration="1.5s" data-bg-image="{{ setting('footer') }}"></div>
             <div class="inner text-style-light text-style-light-2">
                 <div class="container">
@@ -196,25 +196,25 @@
                             <iframe class=" rounded-3 mt-2 wow fadeInUp" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.05590126829!2d113.86641047417714!3d-7.0027000685862175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd9e5d2dce40611%3A0x8a78862419c24e76!2sMA%20Negeri%20Sumenep!5e0!3m2!1sid!2sid!4v1687077558943!5m2!1sid!2sid" width="100%" height="190px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                         <div class="col-6 col-lg-3 wow fadeInUp" data-wow-duration="1s">
-                            <h3 class="text-rsia ">Tentang Kami</h3>
+                            <h3 class="main-color">Tentang Kami</h3>
                             <ul class="list-unstyled">
-                                <li class="p-0 pb-1"><a class="text-rsia" href="{{ route('cari') }}">Pencarian</a></li>
+                                <li class="p-0 pb-1"><a class="main-color" href="{{ route('cari') }}">Pencarian</a></li>
                             </ul>
                         </div>
                         <div class="col-6 col-lg-2 wow fadeInUp" data-wow-duration="1s">
-                            <h3 class="text-rsia">Ikuti kami</h3>
+                            <h3 class="main-color">Ikuti kami</h3>
                             <ul class="social-icon style-solid-rounded-icon icon-size-medium text-start mt-2">
                                 @if (setting('instagram'))
-                                    <li class="instagram"><a href="{{ setting('instagram') }}" class="link hover-text-color text-rsia" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                                    <li class="instagram"><a href="{{ setting('instagram') }}" class="link hover-text-color main-color" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
                                 @endif
                                 @if (setting('facebook'))
-                                    <li class="facebook"><a href="{{ setting('facebook') }}" class="link hover-text-color text-rsia" aria-label="facebook"><i class="fab fa-facebook"></i></a></li>
+                                    <li class="facebook"><a href="{{ setting('facebook') }}" class="link hover-text-color main-color" aria-label="facebook"><i class="fab fa-facebook"></i></a></li>
                                 @endif
                                 @if (setting('youtube'))
-                                    <li class="youtube"><a href="{{ setting('youtube') }}" class="link hover-text-color text-rsia" aria-label="youtube"><i class="fab fa-youtube"></i></a></li>
+                                    <li class="youtube"><a href="{{ setting('youtube') }}" class="link hover-text-color main-color" aria-label="youtube"><i class="fab fa-youtube"></i></a></li>
                                 @endif
                                 @if (setting('tiktok'))
-                                    <li class="tiktok"><a href="{{ setting('tiktok') }}" class="link hover-text-color text-rsia" aria-label="tiktok"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-tikto-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <li class="tiktok"><a href="{{ setting('tiktok') }}" class="link hover-text-color main-color" aria-label="tiktok"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-tikto-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                 <path d="M16.083 2h-4.083a1 1 0 0 0 -1 1v11.5a1.5 1.5 0 1 1 -2.519 -1.1l.12 -.1a1 1 0 0 0 .399 -.8v-4.326a1 1 0 0 0 -1.23 -.974a7.5 7.5 0 0 0 1.73 14.8l.243 -.005a7.5 7.5 0 0 0 7.257 -7.495v-2.7l.311 .153c1.122 .53 2.333 .868 3.59 .993a1 1 0 0 0 1.099 -.996v-4.033a1 1 0 0 0 -.834 -.986a5.005 5.005 0 0 1 -4.097 -4.096a1 1 0 0 0 -.986 -.835z" stroke-width="0" fill="currentColor"></path>
                                             </svg></a></li>
@@ -229,10 +229,10 @@
                 <div class="row">
                     <div class="footer-copyright text-style-light">
                         <div class="copyright ">
-                            <p class="text-center text-rsia mb-0 pt-4 pb-3">&copy;
+                            <p class="text-center main-color mb-0 pt-4 pb-3">&copy;
                                 <script>
                                     document.write(new Date().getFullYear())
-                                </script> {{ setting('nama') }}, Supported by <a href="mailto:boelchan@live.com" class=" hover-text-color text-rsia">Boolean</a>
+                                </script> {{ setting('nama') }}, Supported by <a href="mailto:boelchan@live.com" class=" hover-text-color main-color">Boolean</a>
                             </p>
                         </div>
                     </div>

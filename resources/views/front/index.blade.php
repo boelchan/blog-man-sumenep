@@ -41,8 +41,8 @@
     <section class="position-relative ptb-80 ptb-sm-30 ptb-md-60">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="text-center mb-4 fw-normal">
-                    <h3>Pamflet</h3>
+                <div class="text-center mb-4">
+                    <h2 class="bg-beauty-salon text-clip d-inline-block">Pamflet</h2>
                 </div>
             </div>
             <div class="row ">
@@ -65,5 +65,33 @@
             </div>
         </div>
         <!-- End Gallery Area -->
+    </section>
+
+    <section class="position-relative ptb-80 ptb-sm-40 ptb-md-60 gray-bg">
+        <div class="services-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 mb-5 mb-md-3">
+                        <div class="section-title text-center text-md-start">
+                            <h2 class="wow fadeInUp bg-beauty-salon text-clip mb-0">Fasiltas</h2>
+                            <h4 class="wow fadeInUp bg-beauty-salon text-clip mb-0">terbaik untuk Anda</h4>
+                        </div>
+                    </div>
+                    @foreach ($fasilitas as $l)
+                        <div class="col-6 col-lg-3 mb-4 wow fadeInUp ">
+                            <div class="service-box text-center text-md-start orange-gradient p-4 rounded-3">
+                                @if ($l->icon)
+                                    <img class="mb-2" src="{{ $l->icon_url }}" alt="" height="100px">
+                                @else
+                                    <i class="fas fa-stethoscope fa-4x mb-4"></i>
+                                @endif
+                                <p class="fw-normal">{{ $l->nama }}</p>
+                                <a class="readmore" href="{{ $l->url }}"><span>Detail fasilitas</span></a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
     </section>
 @endsection

@@ -35,7 +35,7 @@
         ]
     },
     {
-        "title": "Layanan",
+        "title": "Fasilitas",
         "icon": "layout-2",
         "route": "service.index",
         "role": [

@@ -13,7 +13,7 @@ class ServiceController extends Controller
 
     public function __construct($title = '')
     {
-        $this->title = 'Layanan';
+        $this->title = 'Fasilitas';
     }
 
     public function index(ServiceDataTable $serviceDatatable)
