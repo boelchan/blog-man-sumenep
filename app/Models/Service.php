@@ -45,4 +45,9 @@ class Service extends Model implements Searchable
     {
         return $this->icon != '' ? asset("storage/layanan/$this->icon") : false;
     }
+
+    public function getUrlAttribute()
+    {
+        return route('front.fasilitas.baca', $this->slug);
+    }
 }

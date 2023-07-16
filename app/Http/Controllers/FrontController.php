@@ -93,6 +93,27 @@ class FrontController extends Controller
         return view('front.post', compact('navbarMenu', 'post', 'meta'));
     }
 
+    public function fasilitas($slug = '')
+    {
+        $navbarMenu = $this->navbarMenu();
+
+        $post = Service::where('slug', $slug)->where('publish', 'ya')->first();
+
+        if (! $post) {
+            return redirect()->route('index');
+        }
+
+        $meta = [
+            'title' => $post->nama,
+            'category' => 'Fasilitas',
+            'description' => ($post->meta_description != '' ? $post->meta_description : Str::limit($post->konten, 250)),
+            'keywords' => $post->meta_keywords,
+            'image' => $post->icon_url,
+        ];
+
+        return view('front.fasilitas-detail', compact('navbarMenu', 'post', 'meta'));
+    }
+
     public function cari(Request $request)
     {
         $navbarMenu = $this->navbarMenu();
@@ -169,6 +190,7 @@ class FrontController extends Controller
             'keywords' => 'alumni',
             'image' => setting('logo'),
         ];
+
         return view('front.alumni.create', compact('navbarMenu', 'meta'));
     }
 
@@ -186,5 +208,4 @@ class FrontController extends Controller
 
         return redirect()->route('front.alumni.baca', $id);
     }
-
 }
