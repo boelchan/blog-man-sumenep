@@ -258,6 +258,8 @@
     <script src="{{ asset('front/js/jquery.min.js') }}"></script>
     <!-- Plugins js -->
     <script src="{{ asset('front/js/plugins.js') }}"></script>
+    <!-- owl -->
+    <script src="{{ asset('front/js/section/owl-carousel-init-min.js') }}"></script>
     <!-- custom js -->
     <script src="{{ asset('front/js/custom.js') }}"></script>
     <!-- script js -->
