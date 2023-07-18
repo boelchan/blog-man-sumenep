@@ -30,6 +30,8 @@ class FrontController extends Controller
         $post = Post::where('tampil_banner', 'ya')->where('publish', 'ya')->orderBy('publish_at', 'desc')->orderBy('updated_at', 'desc')->get();
         $slider = $banner->merge($post);
 
+        $lastestPost = Post::where('publish', 'ya')->orderBy('publish_at', 'desc')->orderBy('updated_at', 'desc')->get();
+
         $pamflet = Post::where('kategori_id', CategoryEnum::PAMFLET)->where('publish', 'ya')->orderBy('publish_at', 'desc')->orderBy('updated_at', 'desc')->get()->take(6);
         $tentangKami = Profile::find(1);
         $fasilitas = Service::all();
@@ -42,7 +44,7 @@ class FrontController extends Controller
             'image' => setting('logo'),
         ];
 
-        return view('front.index', compact('navbarMenu', 'slider', 'tentangKami', 'pamflet', 'meta', 'fasilitas'));
+        return view('front.index', compact('navbarMenu', 'slider', 'tentangKami', 'pamflet', 'meta', 'fasilitas', 'lastestPost'));
     }
 
     public function post($slug = '')

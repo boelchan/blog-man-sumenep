@@ -94,4 +94,45 @@
             </div>
         </div>
     </section>
+
+    <section class="position-relative ptb-80 ptb-sm-30 ptb-md-60">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="text-center mb-4">
+                    <h2 class="bg-beauty-salon text-clip d-inline-block">Kabar Terbaru</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="common-owl-carousel mb-5 owl-carousel owl-theme owl-loaded owl-drag" data-nav="false" data-laptop-view="3" data-main-view="3">
+                    <div class="owl-stage-outer">
+                        <div class="owl-stage">
+                            @foreach ($lastestPost as $post)
+                                <div class="owl-item p-3">
+                                    <div class="blog-post blog-classic item">
+                                        <a class="blog-img" href="{{ $post->url }}">
+                                            <img src="{{ $post->gambar_url }}" alt="Blog 1">
+                                        </a>
+                                        <div class="blog-inner pt-4 px-4">
+                                            <div class="blog-meta">
+                                                <a href="#"> {{ tanggal($post->approved_at) }} </a>
+                                            </div>
+                                            <h3 class="blog-title"><a href="{{ $post->url }}">{{ $post->judul }}</a></h3>
+                                            <div class="post-meta post-meta-two">
+                                                <div class="sh-columns post-meta-comments">
+                                                    <span class="post-meta-categories">
+                                                        <i class="icon-tag"></i>
+                                                        <a href="{{ route('front.post.kategori', $post->kategori->slug) }}" rel="category tag" class="post-category text-uppercase">{{ $post->kategori->nama }}</a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection
