@@ -9,10 +9,10 @@
                 <div class="col-lg-8 col-md-12 col-sm-12 col-12">
                     <div class="col-md-12 mb-30">
                         <div class="blog-post blog-classic blog-horizontal">
-                            <a class="blog-img bg-cover bg-center" href="" data-bg-image="{{ $post->foto_url }}" style="height: 300px; width:300px">
-                                <img src="{{ $post->foto_url }}" alt="foto" >
-                            </a>
-                            <div class="blog-inner pt-3 px-5 shadow-none">
+                            <div>
+                                <img src="{{ $post->foto_url }}" alt="foto">
+                            </div>
+                            <div class="blog-inner py-3 px-5 shadow-none">
                                 <div class="blog-meta">
                                     <span class="badge rounded-pill bg-secondary fw-normal">{{ $post->tahun_lulus }}</span>
                                     @if ($post->jurusan == 'ipa')

@@ -140,7 +140,7 @@
                 <div class="mobileheader">
                     <div class="logo">
                         <a href="/">
-                            <img src="{{ setting('logo') }}" alt="Multipurpose">
+                            <img src="{{ setting('logo') }}" alt="Multipurpose" style="height: 70px">
                         </a>
                     </div>
                     <a class="mobile-close" href="#" aria-label="Close"></a>
@@ -153,6 +153,15 @@
                                 <ul class="object-submenu">
                                     @foreach ($navbarMenu['profil'] as $p)
                                         <li><a href="{{ route('front.post.baca', $p->slug) }}"><span>{{ $p->judul }}</span></a></li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </li>
+                        <li class="has-mega-menu"><a href=""><span>Kategori</span></a>
+                            @if ($navbarMenu['kategori'])
+                                <ul class="object-submenu">
+                                    @foreach ($navbarMenu['kategori'] as $p)
+                                        <li><a href="{{ route('front.post.kategori', $p->slug) }}"><span>{{ $p->nama }}</span></a></li>
                                     @endforeach
                                 </ul>
                             @endif
