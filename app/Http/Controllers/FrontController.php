@@ -30,7 +30,7 @@ class FrontController extends Controller
         $post = Post::where('tampil_banner', 'ya')->where('publish', 'ya')->orderBy('publish_at', 'desc')->orderBy('updated_at', 'desc')->get();
         $slider = $banner->merge($post);
 
-        $lastestPost = Post::where('publish', 'ya')->whereNotIn('kategori_id', [1, 2, 3])->orderBy('publish_at', 'desc')->orderBy('updated_at', 'desc')->get();
+        $lastestPost = Post::where('publish', 'ya')->whereNotIn('kategori_id', [1, 2, 3])->orderBy('publish_at', 'desc')->orderBy('updated_at', 'desc')->limit(10)->get();
 
         $pamflet = Post::where('kategori_id', CategoryEnum::PAMFLET)->where('publish', 'ya')->orderBy('publish_at', 'desc')->orderBy('updated_at', 'desc')->get()->take(6);
         $tentangKami = Profile::find(1);

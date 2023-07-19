@@ -108,20 +108,21 @@
                         <div class="owl-stage">
                             @foreach ($lastestPost as $post)
                                 <div class="owl-item p-3">
-                                    <div class="blog-post blog-classic item">
-                                        <a class="blog-img" href="{{ $post->url }}">
-                                            <img src="{{ $post->gambar_url }}" alt="Blog 1">
-                                        </a>
-                                        <div class="blog-inner pt-4 px-4">
+                                    <div class="blog-post blog-classic common-blog-post item">
+                                        <div class="blog-imgs" style="height: 200px">
+                                            <a class="blog-img" href="{{ $post->url }}">
+                                                <img src="{{ $post->gambar_url }}" alt="Blog imgs" style="height: 200px!important; object-fit: cover; ">
+                                            </a>
+                                        </div>
+                                        <div class="blog-inner pt-2 px-4">
                                             <div class="blog-meta">
                                                 <a href="#"> {{ tanggal($post->approved_at) }} </a>
                                             </div>
-                                            <h3 class="blog-title"><a href="{{ $post->url }}">{{ $post->judul }}</a></h3>
+                                            <span class="blog-title"><a class="fw-normal fs-6" href="{{ $post->url }}">{{ Str::limit($post->judul, 55, '...') }}</a></span>
                                             <div class="post-meta post-meta-two">
                                                 <div class="sh-columns post-meta-comments">
                                                     <span class="post-meta-categories">
-                                                        <i class="icon-tag"></i>
-                                                        <a href="{{ route('front.post.kategori', $post->kategori->slug) }}" rel="category tag" class="post-category text-uppercase">{{ $post->kategori->nama }}</a>
+                                                        <a class="btn btn-outline-success btn-circle" href="{{ route('front.post.kategori', $post->kategori->slug) }}" rel="category tag" class="post-category text-uppercase">{{ $post->kategori->nama }}</a>
                                                     </span>
                                                 </div>
                                             </div>
