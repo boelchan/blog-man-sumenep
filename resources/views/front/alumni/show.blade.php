@@ -10,7 +10,7 @@
                     <div class="col-md-12 mb-30">
                         <div class="blog-post blog-classic blog-horizontal">
                             <div>
-                                <img src="{{ $post->foto_url }}" alt="foto">
+                                <img src="{{ $post->foto_url }}" alt="foto"  style="max-width: 400px;">
                             </div>
                             <div class="blog-inner py-3 px-5 shadow-none">
                                 <div class="blog-meta">
