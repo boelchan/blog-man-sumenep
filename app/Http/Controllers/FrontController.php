@@ -9,6 +9,7 @@ use App\Models\Post;
 use App\Models\Profile;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Spatie\Searchable\Search;
 
@@ -54,7 +55,7 @@ class FrontController extends Controller
         $post = Post::where('slug', $slug)->where('publish', 'ya')->first();
 
         if (! $post) {
-            return redirect()->route('index');
+            return to_route('index');
         }
 
         $meta = [
@@ -75,7 +76,7 @@ class FrontController extends Controller
         $kategori = Category::firstWhere('slug', $kategoriSlug);
 
         if (! $kategori) {
-            return redirect()->route('index');
+            return to_route('index');
         }
 
         $post = Post::where('kategori_id', $kategori->id)
@@ -102,7 +103,7 @@ class FrontController extends Controller
         $post = Service::where('slug', $slug)->where('publish', 'ya')->first();
 
         if (! $post) {
-            return redirect()->route('index');
+            return to_route('index');
         }
 
         $meta = [
@@ -146,7 +147,7 @@ class FrontController extends Controller
             $post = Alumni::findOrFail($id);
 
             if (! $post) {
-                return redirect()->route('index');
+                return to_route('index');
             }
 
             $meta = [
@@ -198,16 +199,23 @@ class FrontController extends Controller
 
     public function alumniStore(Request $request)
     {
-        $request->validate([
+        $rules = [
             'foto' => 'mimes:jpg,jpeg,png|max:1000|required',
             'nama' => 'required|max:250',
             'tahun_lulus' => 'required',
             'jurusan' => 'required',
             'domisili' => 'required',
-        ]);
+        ];
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return to_route('front.alumni.create')
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $id = Alumni::create($request->all());
 
-        return redirect()->route('front.alumni.baca', $id);
+        return to_route('front.alumni.baca', $id);
     }
 }
