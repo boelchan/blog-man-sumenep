@@ -20,4 +20,14 @@ class Category extends Model
             $model->slug = (string) Str::slug($model->nama);
         });
     }
+
+    public function subMenu()
+    {
+        return $this->hasMany(Post::class, 'kategori_id');
+    }
+
+    public function getUrlAttribute()
+    {
+        return route('front.post.kategori', $this->slug);
+    }
 }

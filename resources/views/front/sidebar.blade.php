@@ -16,12 +16,14 @@
                 @php
                     $banner = setting('sidebar');
                 @endphp
-                <div class="category mb-30" data-overlay="5">
-                    <figure class="category-image" data-bg-image="{{ $banner }}">
-                        <img src="{{ $banner }}" alt="Category Box">
-                    </figure>
-                    <h5 class="mb-0 fw-normal"><a href="{{ route('front.post.index') }}">Artikel</a></h5>
-                </div>
+                @foreach ($navbarMenu['addToSidebar'] as $menu)
+                    <div class="category mb-30" data-overlay="5">
+                        <figure class="category-image" data-bg-image="{{ $banner }}">
+                            <img src="{{ $banner }}" alt="Category Box">
+                        </figure>
+                        <h5 class="mb-0 fw-normal"><a href="{{ $menu->url }}">{{ $menu->nama }}</a></h5>
+                    </div>
+                @endforeach
                 <div class="category mb-30" data-overlay="5">
                     <figure class="category-image" data-bg-image="{{ $banner }}">
                         <img src="{{ $banner }}" alt="Category Box">

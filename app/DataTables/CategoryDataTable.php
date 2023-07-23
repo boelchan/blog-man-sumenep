@@ -54,6 +54,9 @@ class CategoryDataTable extends DataTable
         return [
             Column::computed('id')->title('no')->data('DT_RowIndex')->orderable(false),
             Column::make('nama')->orderable(false),
+            Column::make('add_to_header_menu'),
+            Column::make('add_to_footer_menu'),
+            Column::make('add_to_sidebar_menu'),
             Column::computed('action')->addClass('text-center'),
         ];
     }

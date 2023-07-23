@@ -90,29 +90,44 @@
                                     <div class="mainmenu-wrapper have-not-flex d-none d-lg-block pl-40">
                                         <nav class="page_nav">
                                             <ul class="mainmenu">
-                                                <li class="lavel-1 p-0"><a href="/"><span>Home</span></a></li>
+                                                <li class="lavel-1 p-0"><a class="p-1" href="/"><span>Home</span></a></li>
                                                 <li class="lavel-1 p-0 with--drop slide-dropdown">
-                                                    <a href="#"><span>Profil</span></a>
+                                                    <a class="p-1" href="#"><span>Profil</span></a>
                                                     @if ($navbarMenu['profil'])
-                                                        <ul class="dropdown__menu p-2">
+                                                        <ul class="dropdown__menu p-1">
                                                             @foreach ($navbarMenu['profil'] as $p)
-                                                                <li class="text-black px-3"><a href="{{ route('front.post.baca', $p->slug) }}"><span>{{ $p->judul }}</span></a></li>
+                                                                <li class="text-black px-3"><a href="{{ route('front.post.baca', $p->slug) }}"><span>{{ $p->judul }}</span></a> </li>
                                                             @endforeach
                                                         </ul>
                                                     @endif
                                                 </li>
+                                                @foreach ($navbarMenu['addToHeader'] as $menu)
+                                                    @if ($menu->subMenu->count() == 0)
+                                                        <li class="lavel-1 p-0"><a class="pe-1" href="{{ $menu->url }}"><span>{{ $menu->nama }}</span></a></li>
+                                                    @else
+                                                        <li class="lavel-1 p-0 with--drop slide-dropdown">
+                                                            <a class="p-1" href="#"><span>{{ $menu->nama }}</span></a>
+                                                            <ul class="dropdown__menu p-1">
+                                                                @foreach ($menu->subMenu as $sb)
+                                                                    <li class="text-black px-3"><a href="{{ $sb->url }}"><span>{{ $sb->judul }}</span></a>
+                                                                @endforeach
+                                                                <li class="text-black px-3"><a href="{{ $menu->url }}"><span>Lihat Semua</span></a> </li>
+                                                            </ul>
+                                                        </li>
+                                                    @endif
+                                                @endforeach
                                                 <li class="lavel-1 p-0 with--drop slide-dropdown">
-                                                    <a href="#"><span>Kategori</span></a>
+                                                    <a class="p-1" href="#"><span>Kategori</span></a>
                                                     @if ($navbarMenu['kategori'])
-                                                        <ul class="dropdown__menu p-2">
+                                                        <ul class="dropdown__menu p-1">
                                                             @foreach ($navbarMenu['kategori'] as $p)
-                                                                <li class="text-black px-3"><a href="{{ route('front.post.kategori', $p->slug) }}"><span>{{ $p->nama }}</span></a></li>
+                                                                <li class="text-black px-3"><a href="{{ $p->url }}"><span>{{ $p->nama }}</span></a> </li>
                                                             @endforeach
                                                         </ul>
                                                     @endif
                                                 </li>
-                                                <li class="lavel-1 p-0"><a href="{{ route('front.alumni.index') }}"><span>Alumni</span></a></li>
-                                                <li class="lavel-1 p-0"><a href="{{ route('cari') }}" title="pencarian"><span><i class="fa fa-search fs-4"></i></span></a></li>
+                                                <li class="lavel-1 p-0"><a class="pe-1" href="{{ route('front.alumni.index') }}"><span>Alumni</span></a> </li>
+                                                <li class="lavel-1 p-0"><a class="pe-0" href="{{ route('cari') }}" title="pencarian"><span><i class="fa fa-search fs-4"></i></span></a></li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -152,16 +167,30 @@
                             @if ($navbarMenu['profil'])
                                 <ul class="object-submenu">
                                     @foreach ($navbarMenu['profil'] as $p)
-                                        <li><a href="{{ route('front.post.baca', $p->slug) }}"><span>{{ $p->judul }}</span></a></li>
+                                        <li><a href="{{ $p->url }}"><span>{{ $p->judul }}</span></a> </li>
                                     @endforeach
                                 </ul>
                             @endif
                         </li>
+                        @foreach ($navbarMenu['addToHeader'] as $menu)
+                            @if ($menu->subMenu->count() == 0)
+                                <li class="lavel-1"><a href="{{ $menu->url }}"><span>{{ $menu->nama }}</span></a></li>
+                            @else
+                                <li class="has-mega-menu"><a href=""><span>{{ $menu->nama }}</span></a>
+                                    <ul class="object-submenu">
+                                        @foreach ($menu->subMenu as $sb)
+                                            <li><a href="{{ $sb->url }}"><span>{{ $sb->judul }}</span></a> </li>
+                                        @endforeach
+                                        <li><a href="{{ $menu->url }}"><span>Lihat Semua</span></a> </li>
+                                    </ul>
+                                </li>
+                            @endif
+                        @endforeach
                         <li class="has-mega-menu"><a href=""><span>Kategori</span></a>
                             @if ($navbarMenu['kategori'])
                                 <ul class="object-submenu">
                                     @foreach ($navbarMenu['kategori'] as $p)
-                                        <li><a href="{{ route('front.post.kategori', $p->slug) }}"><span>{{ $p->nama }}</span></a></li>
+                                        <li><a href="{{ $p->url }}"><span>{{ $p->nama }}</span></a> </li>
                                     @endforeach
                                 </ul>
                             @endif
@@ -207,7 +236,10 @@
                         <div class="col-6 col-lg-3 wow fadeInUp" data-wow-duration="1s">
                             <h3 class="main-color">Tentang Kami</h3>
                             <ul class="list-unstyled">
-                                <li class="p-0 pb-1"><a class="main-color" href="{{ route('cari') }}">Pencarian</a></li>
+                                @foreach ($navbarMenu['addToFooter'] as $menu)
+                                    <li class="p-0 pb-1"><a class="main-color" href="{{ $menu->url }}">{{ $menu->nama }}</a> </li>
+                                @endforeach
+                                <li class="p-0 pb-1"><a class="main-color" href="{{ route('cari') }}">Pencarian</a> </li>
                             </ul>
                         </div>
                         <div class="col-6 col-lg-2 wow fadeInUp" data-wow-duration="1s">
@@ -217,16 +249,21 @@
                                     <li class="instagram"><a href="{{ setting('instagram') }}" class="link hover-text-color main-color" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
                                 @endif
                                 @if (setting('facebook'))
-                                    <li class="facebook"><a href="{{ setting('facebook') }}" class="link hover-text-color main-color" aria-label="facebook"><i class="fab fa-facebook"></i></a></li>
+                                    <li class="facebook"><a href="{{ setting('facebook') }}" class="link hover-text-color main-color" aria-label="facebook"><i class="fab fa-facebook"></i></a>
+                                    </li>
                                 @endif
                                 @if (setting('youtube'))
                                     <li class="youtube"><a href="{{ setting('youtube') }}" class="link hover-text-color main-color" aria-label="youtube"><i class="fab fa-youtube"></i></a></li>
                                 @endif
                                 @if (setting('tiktok'))
-                                    <li class="tiktok"><a href="{{ setting('tiktok') }}" class="link hover-text-color main-color" aria-label="tiktok"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-tikto-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <li class="tiktok">
+                                        <a href="{{ setting('tiktok') }}" class="link hover-text-color main-color" aria-label="tiktok">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-tikto-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                 <path d="M16.083 2h-4.083a1 1 0 0 0 -1 1v11.5a1.5 1.5 0 1 1 -2.519 -1.1l.12 -.1a1 1 0 0 0 .399 -.8v-4.326a1 1 0 0 0 -1.23 -.974a7.5 7.5 0 0 0 1.73 14.8l.243 -.005a7.5 7.5 0 0 0 7.257 -7.495v-2.7l.311 .153c1.122 .53 2.333 .868 3.59 .993a1 1 0 0 0 1.099 -.996v-4.033a1 1 0 0 0 -.834 -.986a5.005 5.005 0 0 1 -4.097 -4.096a1 1 0 0 0 -.986 -.835z" stroke-width="0" fill="currentColor"></path>
-                                            </svg></a></li>
+                                            </svg>
+                                        </a>
+                                    </li>
                                 @endif
                             </ul>
                         </div>
@@ -241,7 +278,8 @@
                             <p class="text-center main-color mb-0 pt-4 pb-3">&copy;
                                 <script>
                                     document.write(new Date().getFullYear())
-                                </script> {{ setting('nama') }}, Supported by <a href="mailto:boelchan@live.com" class=" hover-text-color main-color">Boolean</a>
+                                </script>
+                                {{ setting('nama') }}, Supported by <a href="mailto:boelchan@live.com" class=" hover-text-color main-color">Boolean</a>
                             </p>
                         </div>
                     </div>
@@ -255,13 +293,16 @@
     {{-- <a href="#" id="scroll-top" class="scroll-top show with-hover" aria-label="Arrow Up">
             <i class="ti-arrow-up"></i>
         </a> --}}
-    <a href="https://api.whatsapp.com/send?phone={{ setting('whatsapp') }}&text=Halo" class="myfloat" target="_blank">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp fs-2" width="35" height="35" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"></path>
-            <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"></path>
-        </svg>
-    </a>
+    @if (setting('whatsapp'))
+        <a href="https://api.whatsapp.com/send?phone={{ setting('whatsapp') }}&text=Halo" class="myfloat" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-whatsapp fs-2" width="35" height="35" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"></path>
+                <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1">
+                </path>
+            </svg>
+        </a>
+    @endif
     </div><!-- Wrapper end -->
     <!-- jquery -->
     <script src="{{ asset('front/js/jquery.min.js') }}"></script>

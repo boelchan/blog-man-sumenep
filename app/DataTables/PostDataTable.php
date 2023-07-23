@@ -38,6 +38,9 @@ class PostDataTable extends DataTable
                 if ($query->tampil_banner == 'ya') {
                     $status .= '<span class="badge bg-info mb-1">Tampil di Banner</span> ';
                 }
+                if ($query->add_to_submenu == 'ya') {
+                    $status .= '<span class="badge bg-purple mb-1">Tampil di Submenu</span> ';
+                }
 
                 return $status;
             } else {

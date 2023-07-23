@@ -12,7 +12,7 @@ class Service extends Model implements Searchable
 {
     use HasFactory;
 
-    public $searchableType = 'Layanan';
+    public $searchableType = 'Fasilitas';
 
     protected $guarded = ['id'];
 

@@ -16,6 +16,18 @@
                             <div class="row">
                                 @bind($category)
                                     <x-form-input name="nama" label="Nama" class="mb-2 h-auto" rows="3" />
+                                    <x-form-group name="add_to_header_menu" label="Add To Header Menu" inline class="mb-2">
+                                        <x-form-radio name="add_to_header_menu" value="ya" label="Ya" />
+                                        <x-form-radio name="add_to_header_menu" value="tidak" label="Tidak" />
+                                    </x-form-group>
+                                    <x-form-group name="add_to_footer_menu" label="Add To Footer Menu" inline class="mb-2">
+                                        <x-form-radio name="add_to_footer_menu" value="ya" label="Ya" />
+                                        <x-form-radio name="add_to_footer_menu" value="tidak" label="Tidak" />
+                                    </x-form-group>
+                                    <x-form-group name="add_to_sidebar_menu" label="Add To Sidebar Menu" inline class="mb-2">
+                                        <x-form-radio name="add_to_sidebar_menu" value="ya" label="Ya" />
+                                        <x-form-radio name="add_to_sidebar_menu" value="tidak" label="Tidak" />
+                                    </x-form-group>
                                 @endbind
                                 <x-form-submit class="mt-3">Simpan</x-form-submit>
                             </div>

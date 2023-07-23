@@ -18,9 +18,12 @@ class FrontController extends Controller
     public function navbarMenu()
     {
         $profil = Post::select(['id', 'judul', 'slug'])->where(['publish' => 'ya', 'kategori_id' => CategoryEnum::PROFIL])->get();
-        $kategori = Category::whereNotIn('id', [1, 2, 3])->get();
+        $kategori = Category::whereNotIn('id', [1, 2, 3])->where('add_to_header_menu', 'tidak')->get();
+        $addToHeader = Category::whereNotIn('id', [1, 2, 3])->where('add_to_header_menu', 'ya')->get();
+        $addToSidebar = Category::whereNotIn('id', [1, 2, 3])->where('add_to_sidebar_menu', 'ya')->get();
+        $addToFooter = Category::whereNotIn('id', [1, 2, 3])->where('add_to_footer_menu', 'ya')->get();
 
-        return ['profil' => $profil, 'kategori' => $kategori];
+        return ['profil' => $profil, 'kategori' => $kategori, 'addToHeader' => $addToHeader, 'addToSidebar' => $addToSidebar, 'addToFooter' => $addToFooter];
     }
 
     public function index()
@@ -133,6 +136,8 @@ class FrontController extends Controller
 
         $searchResults = (new Search())
             ->registerModel(Post::class, 'judul', 'konten')
+            ->registerModel(Service::class, 'nama', 'konten')
+            ->limitAspectResults(10)
             ->search(trim($q));
 
         return view('front.pencarian', compact('navbarMenu', 'q', 'searchResults', 'meta'));
@@ -207,11 +212,8 @@ class FrontController extends Controller
             'domisili' => 'required',
         ];
         $validator = Validator::make($request->all(), $rules);
-
         if ($validator->fails()) {
-            return to_route('front.alumni.create')
-                ->withErrors($validator)
-                ->withInput();
+            return to_route('front.alumni.create')->withErrors($validator)->withInput();
         }
 
         $id = Alumni::create($request->all());

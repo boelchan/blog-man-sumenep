@@ -6,6 +6,7 @@ use App\DataTables\PostDataTable;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -27,19 +28,22 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $rules = [
             'gambar' => 'mimes:jpg,jpeg,png|max:1000',
             'kategori_id' => 'required',
             'judul' => 'required|max:250|unique:posts',
             'publish_at' => 'required_if:publish,ya',
             'meta_keywords' => 'max:250',
             'meta_description' => 'max:250',
-        ]);
-
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return to_route('post.create')->withErrors($validator)->withInput();
+        }
         $uuid = (string) Str::uuid();
         $id = Post::create($request->all() + ['uuid' => $uuid]);
 
-        return redirect()->route('post.show', [$id, 'uuid' => $uuid]);
+        return to_route('post.show', [$id, 'uuid' => $uuid]);
     }
 
     public function show(Post $post)
@@ -61,17 +65,21 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post)
     {
-        $request->validate([
+        $rules = [
             'gambar' => 'mimes:jpg,jpeg,png|max:1000',
             'judul' => 'required|max:250|unique:posts,judul,'.$post->id,
             'publish_at' => 'required_if:publish,ya',
             'meta_keywords' => 'max:250',
             'meta_description' => 'max:250',
-        ]);
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return to_route('post.edit', [$post->id, 'uuid' => $post->uuid])->withErrors($validator)->withInput();
+        }
 
         $post->update($request->all());
 
-        return redirect()->route('post.show', [$post->id, 'uuid' => $post->uuid]);
+        return to_route('post.show', [$post->id, 'uuid' => $post->uuid]);
     }
 
     public function destroy(Post $post)

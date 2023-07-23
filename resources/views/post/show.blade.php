@@ -28,6 +28,9 @@
                         @else
                             <span class="badge bg-secondary-lt ">Pending</span>
                         @endif
+                        @if ($post->add_to_submenu == 'ya')
+                            <span class="badge bg-purple mt-1">Tampil di Submenu</span>
+                        @endif
                     </div>
                     <div class="card-body">
                         <div class="mb-3">
