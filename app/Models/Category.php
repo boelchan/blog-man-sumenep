@@ -23,7 +23,7 @@ class Category extends Model
 
     public function subMenu()
     {
-        return $this->hasMany(Post::class, 'kategori_id');
+        return $this->hasMany(Post::class, 'kategori_id')->where('add_to_submenu', 'ya');
     }
 
     public function getUrlAttribute()

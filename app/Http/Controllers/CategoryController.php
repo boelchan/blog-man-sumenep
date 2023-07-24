@@ -52,7 +52,7 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
-        if (in_array($category->id, [1, 2, 3, 4, 5])) {
+        if (in_array($category->id, [1, 2, 3, 4])) {
             return response()->json(['message' => 'Kategori ini tidak dapat dihapus'], 400);
         }
         if ($category->delete()) {

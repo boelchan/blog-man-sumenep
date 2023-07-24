@@ -19,8 +19,6 @@ class CategorySeeder extends Seeder
             ['nama' => 'Pamflet', 'slug' => 'pamflet', 'is_primary' => 1],
             ['nama' => 'Banner', 'slug' => 'banner', 'is_primary' => 1],
             ['nama' => 'Informasi', 'slug' => 'informasi', 'is_primary' => 1],
-            ['nama' => 'Artikel', 'slug' => 'artikel', 'is_primary' => 1],
-            ['nama' => 'Agenda', 'slug' => 'agenda', 'is_primary' => 1],
         ]);
     }
 }

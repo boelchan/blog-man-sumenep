@@ -8,5 +8,4 @@ enum CategoryEnum: int
     case PAMFLET = 2;
     case BANNER = 3;
     case INFORMASI = 4;
-    case ARTIKEL = 5;
 }
