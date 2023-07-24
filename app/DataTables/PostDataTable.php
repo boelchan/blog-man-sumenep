@@ -69,7 +69,7 @@ class PostDataTable extends DataTable
         return $this->builder()
             ->setTableId('post-table')
             ->columns($this->getColumns())
-            ->orderBy(3, 'asc')
+            ->orderBy(3, 'desc')
             ->ajax([
                 'data' => 'function(d) { 
                     d.judul = $("#judul").val();
