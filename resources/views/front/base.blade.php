@@ -91,16 +91,6 @@
                                         <nav class="page_nav">
                                             <ul class="mainmenu">
                                                 <li class="lavel-1 p-0"><a class="p-1" href="/"><span>Home</span></a></li>
-                                                <li class="lavel-1 p-0 with--drop slide-dropdown">
-                                                    <a class="p-1" href="#"><span>Profil</span></a>
-                                                    @if ($navbarMenu['profil'])
-                                                        <ul class="dropdown__menu p-1">
-                                                            @foreach ($navbarMenu['profil'] as $p)
-                                                                <li class="text-black px-3"><a href="{{ route('front.post.baca', $p->slug) }}"><span>{{ $p->judul }}</span></a> </li>
-                                                            @endforeach
-                                                        </ul>
-                                                    @endif
-                                                </li>
                                                 @foreach ($navbarMenu['addToHeader'] as $menu)
                                                     @if ($menu->subMenu->count() == 0)
                                                         <li class="lavel-1 p-0"><a class="pe-1" href="{{ $menu->url }}"><span>{{ $menu->nama }}</span></a></li>
@@ -116,16 +106,16 @@
                                                         </li>
                                                     @endif
                                                 @endforeach
-                                                <li class="lavel-1 p-0 with--drop slide-dropdown">
-                                                    <a class="p-1" href="#"><span>Kategori</span></a>
-                                                    @if ($navbarMenu['kategori'])
+                                                @if ($navbarMenu['kategori']->count() > 0)
+                                                    <li class="lavel-1 p-0 with--drop slide-dropdown">
+                                                        <a class="p-1" href="#"><span>Kategori</span></a>
                                                         <ul class="dropdown__menu p-1">
                                                             @foreach ($navbarMenu['kategori'] as $p)
                                                                 <li class="text-black px-3"><a href="{{ $p->url }}"><span>{{ $p->nama }}</span></a> </li>
                                                             @endforeach
                                                         </ul>
-                                                    @endif
-                                                </li>
+                                                    </li>
+                                                @endif
                                                 <li class="lavel-1 p-0"><a class="pe-1" href="{{ route('front.alumni.index') }}"><span>Alumni</span></a> </li>
                                                 <li class="lavel-1 p-0"><a class="pe-0" href="{{ route('cari') }}" title="pencarian"><span><i class="fa fa-search fs-4"></i></span></a></li>
                                             </ul>
@@ -163,15 +153,6 @@
                 <div class="menu-content">
                     <ul class="menulist object-custom-menu">
                         <li class="lavel-1"><a href="/"><span>Home</span></a></li>
-                        <li class="has-mega-menu"><a href=""><span>Profil</span></a>
-                            @if ($navbarMenu['profil'])
-                                <ul class="object-submenu">
-                                    @foreach ($navbarMenu['profil'] as $p)
-                                        <li><a href="{{ $p->url }}"><span>{{ $p->judul }}</span></a> </li>
-                                    @endforeach
-                                </ul>
-                            @endif
-                        </li>
                         @foreach ($navbarMenu['addToHeader'] as $menu)
                             @if ($menu->subMenu->count() == 0)
                                 <li class="lavel-1"><a href="{{ $menu->url }}"><span>{{ $menu->nama }}</span></a></li>
@@ -186,15 +167,15 @@
                                 </li>
                             @endif
                         @endforeach
-                        <li class="has-mega-menu"><a href=""><span>Kategori</span></a>
-                            @if ($navbarMenu['kategori'])
+                        @if ($navbarMenu['kategori']->count() > 0)
+                            <li class="has-mega-menu"><a href=""><span>Kategori</span></a>
                                 <ul class="object-submenu">
                                     @foreach ($navbarMenu['kategori'] as $p)
                                         <li><a href="{{ $p->url }}"><span>{{ $p->nama }}</span></a> </li>
                                     @endforeach
                                 </ul>
-                            @endif
-                        </li>
+                            </li>
+                        @endif
                         <li class="lavel-1"><a href="{{ route('front.alumni.index') }}"><span>Alumni</span></a></li>
                         <li class="lavel-1"><a href="{{ route('cari') }}"><span><i class="fa fa-search"></i> Pencarian</span></a></li>
                     </ul>

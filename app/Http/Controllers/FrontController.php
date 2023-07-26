@@ -17,13 +17,12 @@ class FrontController extends Controller
 {
     public function navbarMenu()
     {
-        $profil = Post::select(['id', 'judul', 'slug'])->where(['publish' => 'ya', 'kategori_id' => CategoryEnum::PROFIL])->get();
-        $kategori = Category::whereNotIn('id', [1, 2, 3])->where('add_to_header_menu', 'tidak')->get();
-        $addToHeader = Category::whereNotIn('id', [1, 2, 3])->where('add_to_header_menu', 'ya')->get();
-        $addToSidebar = Category::whereNotIn('id', [1, 2, 3])->where('add_to_sidebar_menu', 'ya')->get();
-        $addToFooter = Category::whereNotIn('id', [1, 2, 3])->where('add_to_footer_menu', 'ya')->get();
+        $kategori = Category::whereNotIn('id', [1, 2])->where('add_to_header_menu', 'tidak')->get();
+        $addToHeader = Category::whereNotIn('id', [1, 2])->where('add_to_header_menu', 'ya')->get();
+        $addToSidebar = Category::whereNotIn('id', [1, 2])->where('add_to_sidebar_menu', 'ya')->get();
+        $addToFooter = Category::whereNotIn('id', [1, 2])->where('add_to_footer_menu', 'ya')->get();
 
-        return ['profil' => $profil, 'kategori' => $kategori, 'addToHeader' => $addToHeader, 'addToSidebar' => $addToSidebar, 'addToFooter' => $addToFooter];
+        return ['kategori' => $kategori, 'addToHeader' => $addToHeader, 'addToSidebar' => $addToSidebar, 'addToFooter' => $addToFooter];
     }
 
     public function index()

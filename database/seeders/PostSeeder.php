@@ -20,14 +20,6 @@ class PostSeeder extends Seeder
             [
                 'uuid' => $faker->uuid(),
                 'kategori_id' => '1',
-                'judul' => 'Tentang Kami',
-                'slug' => Str::slug('tentang-kami'),
-                'konten' => $faker->paragraph(50),
-                'publish_at' => now(),
-            ],
-            [
-                'uuid' => $faker->uuid(),
-                'kategori_id' => '3',
                 'judul' => 'banner',
                 'slug' => Str::slug('banner'),
                 'konten' => $faker->paragraph(50),
