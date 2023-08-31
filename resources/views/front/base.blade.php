@@ -43,25 +43,15 @@
     <link rel="stylesheet" href="{{ asset('front/css/custom.css') }}">
     <link href="{{ asset('dist/css/tabler-icons.min.css') }}" rel="stylesheet" />
 
-
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap');
 
-        body {
-            font-family: 'Poppins', sans-serif !important;
+        * {
+            font-family: 'Quicksand', sans-serif !important;
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        span,
-        label,
-        a,
-        p,
-        li {
-            font-family: 'Poppins', sans-serif !important;
+        :root {
+            font-family: 'Quicksand', sans-serif !important;
         }
     </style>
 
@@ -117,7 +107,7 @@
                                                     </li>
                                                 @endif
                                                 <li class="lavel-1 p-0"><a class="pe-1" href="{{ route('front.alumni.index') }}"><span>Alumni</span></a> </li>
-                                                <li class="lavel-1 p-0"><a class="pe-0" href="{{ route('cari') }}" title="pencarian"><span><i class="fa fa-search fs-4"></i></span></a></li>
+                                                <li class="lavel-1 p-0"><a class="pe-0" href="{{ route('cari') }}" title="pencarian"><span><i class="ti ti-search fs-4"></i></span></a></li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -227,24 +217,16 @@
                             <h3 class="main-color">Ikuti kami</h3>
                             <ul class="social-icon style-solid-rounded-icon icon-size-medium text-start mt-2">
                                 @if (setting('instagram'))
-                                    <li class="instagram"><a href="{{ setting('instagram') }}" class="link hover-text-color main-color" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                                    <li class="instagram"><a href="{{ setting('instagram') }}" class="link hover-text-color main-color" aria-label="Instagram"><i class="ti ti-brand-instagram"></i></a></li>
                                 @endif
                                 @if (setting('facebook'))
-                                    <li class="facebook"><a href="{{ setting('facebook') }}" class="link hover-text-color main-color" aria-label="facebook"><i class="fab fa-facebook"></i></a>
-                                    </li>
+                                    <li class="facebook"><a href="{{ setting('facebook') }}" class="link hover-text-color main-color" aria-label="facebook"><i class="ti ti-brand-facebook"></i></a> </li>
                                 @endif
                                 @if (setting('youtube'))
-                                    <li class="youtube"><a href="{{ setting('youtube') }}" class="link hover-text-color main-color" aria-label="youtube"><i class="fab fa-youtube"></i></a></li>
+                                    <li class="youtube"><a href="{{ setting('youtube') }}" class="link hover-text-color main-color" aria-label="youtube"><i class="ti ti-brand-youtube"></i></a></li>
                                 @endif
                                 @if (setting('tiktok'))
-                                    <li class="tiktok">
-                                        <a href="{{ setting('tiktok') }}" class="link hover-text-color main-color" aria-label="tiktok">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-tikto-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path d="M16.083 2h-4.083a1 1 0 0 0 -1 1v11.5a1.5 1.5 0 1 1 -2.519 -1.1l.12 -.1a1 1 0 0 0 .399 -.8v-4.326a1 1 0 0 0 -1.23 -.974a7.5 7.5 0 0 0 1.73 14.8l.243 -.005a7.5 7.5 0 0 0 7.257 -7.495v-2.7l.311 .153c1.122 .53 2.333 .868 3.59 .993a1 1 0 0 0 1.099 -.996v-4.033a1 1 0 0 0 -.834 -.986a5.005 5.005 0 0 1 -4.097 -4.096a1 1 0 0 0 -.986 -.835z" stroke-width="0" fill="currentColor"></path>
-                                            </svg>
-                                        </a>
-                                    </li>
+                                    <li class="tiktok"> <a href="{{ setting('tiktok') }}" class="link hover-text-color main-color" aria-label="tiktok"> <i class="ti ti-brand-tiktok"></i> </a> </li>
                                 @endif
                             </ul>
                         </div>

@@ -24,32 +24,20 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/datatables/datatables.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/summernote/summernote-lite.min.css') }}" />
 
-    {{-- <style>
-        @import url('https://rsms.me/inter/inter.css');
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
 
         :root {
-            --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+            --tblr-font-sans-serif: 'Quicksand', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
         }
 
-        body {
-            font-feature-settings: "cv03", "cv04", "cv11";
+        * {
+            font-family: 'Quicksand', sans-serif !important;
         }
-    </style> --}}
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
     </style>
-    <style>
-        :root {
-            font-family: 'Poppins', sans-serif !important;
-        }
 
-        body,
-        p,
-        li,
-        span {
-            font-family: 'Poppins', sans-serif !important;
-        }
-    </style>
 
     @yield('page-style')
 

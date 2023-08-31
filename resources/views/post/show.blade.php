@@ -58,7 +58,7 @@
                     <div class="card-body">
                         @if ($post->gambar)
                             <div class="row justify-content-center mb-5">
-                                <img src="{{ $post->url_gambar }}" class="rounded">
+                                <img src="{{ $post->gambar_url }}" class="rounded">
                             </div>
                         @endif
                         {!! $post->konten !!}
