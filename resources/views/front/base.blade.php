@@ -167,7 +167,7 @@
                             </li>
                         @endif
                         <li class="lavel-1"><a href="{{ route('front.alumni.index') }}"><span>Alumni</span></a></li>
-                        <li class="lavel-1"><a href="{{ route('cari') }}"><span><i class="fa fa-search"></i> Pencarian</span></a></li>
+                        <li class="lavel-1"><a href="{{ route('cari') }}"><span><i class="ti ti-search"></i> Pencarian</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -192,13 +192,13 @@
                                 </div>
                                 <div class="col-md-7">
                                     <div class="">
-                                        <i class="fa fa-home"></i> {{ setting('alamat') }}
+                                        <i class="ti ti-home"></i> {{ setting('alamat') }}
                                     </div>
                                     <div class="">
-                                        <i class="fa fa-phone"></i> {{ setting('telepon') }}
+                                        <i class="ti ti-phone"></i> {{ setting('telepon') }}
                                     </div>
                                     <div class="">
-                                        <i class="fa fa-envelope"></i> {{ setting('email') }}
+                                        <i class="ti ti-mail"></i> {{ setting('email') }}
                                     </div>
                                 </div>
                             </div>

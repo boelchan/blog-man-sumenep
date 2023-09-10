@@ -100,9 +100,9 @@
                                             <a href="@if (isset($m->sub)) #navbar-base @else {{ route($m->route) }} @endif" class="nav-link @isset($m->sub) dropdown-toggle @endisset 
                                                 @if (isset($m->sub)) @if (Str::startsWith(Route::currentRouteName(),
                                                         collect($m->sub)->pluck('route')->all()))
-                                                        active @endif
+                                                        active fw-bold @endif
 @else
-{{ Str::startsWith(Route::currentRouteName(), $m->route) ? 'active' : '' }}
+{{ Str::startsWith(Route::currentRouteName(), $m->route) ? 'active fw-bold' : '' }}
                                                 @endif
                                                 " @isset($m->sub)
                                                     data-bs-toggle="dropdown"
@@ -119,7 +119,7 @@
                                                 <div class="dropdown-menu">
                                                     @foreach ($m->sub as $sub)
                                                         @if (Auth::check() && Auth::user()->hasRole($sub->role))
-                                                            <a href="{{ route($sub->route) }}" class="dropdown-item {{ Str::startsWith(Route::currentRouteName(), $sub->route) ? 'active' : '' }}">
+                                                            <a href="{{ route($sub->route) }}" class="dropdown-item {{ Str::startsWith(Route::currentRouteName(), $sub->route) ? 'active fw-bold' : '' }}">
                                                                 {{ $sub->title }}
                                                             </a>
                                                         @endif
@@ -149,7 +149,7 @@
                                             @if (!$loop->last)
                                                 <li class="breadcrumb-item"><a href="{{ $breadcrumb['url'] }}">{{ $breadcrumb['title'] }}</a></li>
                                             @else
-                                                <li class="breadcrumb-item active">{{ $breadcrumb['title'] }}</li>
+                                                <li class="breadcrumb-item active fw-bold">{{ $breadcrumb['title'] }}</li>
                                             @endif
                                         @endforeach
                                     </ol>
