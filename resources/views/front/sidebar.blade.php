@@ -6,7 +6,7 @@
                 <div class="search-form">
                     <form action="{{ route('cari') }}" method="get">
                         <div class="form-group">
-                            <input type="text" maxlength="200" name="search" class="form-control" placeholder="cari pengumuman, layanan, artikel">
+                            <input type="text" maxlength="200" name="search" class="form-control" placeholder="cari prestasi, artikel, agenda">
                             <button type="submit" class="submit-search" aria-label="Search"><i class="ti ti-search"></i></button>
                         </div>
                     </form>
