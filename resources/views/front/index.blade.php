@@ -14,7 +14,8 @@
                 @forelse ($slider as $b)
                     <div class="carousel-item @if ($loop->first) active @endif">
                         <a href="{{ $b->url }}">
-                            <img src="{{ $b->gambar_url }}" class="d-block w-100" alt="..." style="object-fit: cover; max-height:600px">
+                            {{-- <img src="{{ $b->gambar_url }}" class="d-block w-100" alt="..." style="object-fit: cover; max-height:600px"> --}}
+                            <img src="{{ $b->gambar_url }}" class="d-block mx-auto" alt="..." style="max-height:600px">
                             <div class="carousel-caption d-none d-md-block">
                                 <label class="blur rounded-pill px-3 py-1">
                                     {{ $b->judul }}
