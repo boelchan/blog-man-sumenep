@@ -30,7 +30,7 @@ class SiswaDataTable extends DataTable
             ->editColumn('action', function ($query) {
                 return view('components.button.show', ['action' => route('siswa.show', [$query->id, 'uuid' => $query->uuid])]).
                     view('components.button.edit', ['action' => route('siswa.edit', [$query->id, 'uuid' => $query->uuid])]).
-                    view('components.button.destroy', ['action' => route('siswa.destroy', [$query->id, 'uuid' => $query->uuid]), 'label' => $query->nama, 'target' => 'service-table']);
+                    view('components.button.destroy', ['action' => route('siswa.destroy', [$query->id, 'uuid' => $query->uuid]), 'label' => $query->nama, 'target' => 'siswa-table']);
             })
             ->rawColumns(['action']);
     }

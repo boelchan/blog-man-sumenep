@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\ServiceDataTable;
-use App\Models\Service;
+use App\DataTables\SiswaDataTable;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -13,78 +13,77 @@ class SiswaController extends Controller
 
     public function __construct($title = '')
     {
-        $this->title = 'Fasilitas';
+        $this->title = 'Siswa';
     }
 
-    public function index(ServiceDataTable $serviceDatatable)
+    public function index(SiswaDataTable $siswaDataTable)
     {
         $title = $this->title;
         $breadcrumbs = [['url' => '', 'title' => $title]];
 
-        return $serviceDatatable->render('service.index', compact('breadcrumbs', 'title'));
+        return $siswaDataTable->render('siswa.index', compact('breadcrumbs', 'title'));
     }
 
     public function create()
     {
         $title = $this->title;
-        $breadcrumbs = [['url' => route('service.index'), 'title' => $title], ['url' => '#', 'title' => 'tambah']];
+        $breadcrumbs = [['url' => route('siswa.index'), 'title' => $title], ['url' => '#', 'title' => 'tambah']];
 
-        return view('service.create', compact('breadcrumbs', 'title'));
+        return view('siswa.create', compact('breadcrumbs', 'title'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'icon' => 'mimes:jpg,jpeg,png,gif|max:1000',
-            'nama' => 'required|max:250|unique:services',
-            'meta_keywords' => 'max:250',
-            'meta_description' => 'max:250',
+            'kode' => 'required|max:250|unique:siswa',
+            'nama' => 'required',
+            'kelas' => 'required',
         ]);
 
         $uuid = (string) Str::uuid();
-        $id = Service::create($request->all() + ['uuid' => $uuid]);
+        $id = Siswa::create($request->all() + ['uuid' => $uuid]);
 
-        return redirect()->route('service.show', [$id, 'uuid' => $uuid]);
+        return redirect()->route('siswa.show', [$id, 'uuid' => $uuid]);
     }
 
-    public function show(Service $service)
+    public function show(Siswa $siswa)
     {
-        checkUuid($service->uuid);
+        checkUuid($siswa->uuid);
         $title = $this->title;
-        $breadcrumbs = [['url' => route('service.index'), 'title' => $title], ['url' => '#', 'title' => 'preview']];
+        $breadcrumbs = [['url' => route('siswa.index'), 'title' => $title], ['url' => '#', 'title' => 'preview']];
 
-        return view('service.show', compact('service', 'breadcrumbs', 'title'));
+        return view('siswa.show', compact('siswa', 'breadcrumbs', 'title'));
     }
 
-    public function edit(Service $service)
+    public function edit(Siswa $siswa)
     {
-        checkUuid($service->uuid);
+        checkUuid($siswa->uuid);
         $title = $this->title;
-        $breadcrumbs = [['url' => route('service.index'), 'title' => $title], ['url' => '', 'title' => 'Edit']];
+        $breadcrumbs = [['url' => route('siswa.index'), 'title' => $title], ['url' => '', 'title' => 'Edit']];
 
-        return view('service.edit', compact('service', 'title', 'breadcrumbs'));
+        return view('siswa.edit', compact('siswa', 'title', 'breadcrumbs'));
     }
 
-    public function update(Request $request, Service $service)
+    public function update(Request $request, Siswa $siswa)
     {
         $request->validate([
-            'icon' => 'mimes:jpg,jpeg,png,gif|max:1000',
-            'nama' => 'required|max:250|unique:services,nama,'.$service->id,
-            'meta_keywords' => 'max:250',
-            'meta_description' => 'max:250',
+            'kode' => 'required|max:250|unique:siswa,kode,'.$siswa->id,
+            'nama' => 'required',
+            'kelas' => 'required',
+
         ]);
 
-        $service->update($request->all());
+        $siswa->update($request->all());
 
-        return redirect()->route('service.show', [$service->id, 'uuid' => $service->uuid]);
+        return redirect()->route('siswa.show', [$siswa->id, 'uuid' => $siswa->uuid]);
     }
 
-    public function destroy(Service $service)
+    public function destroy(Siswa $siswa)
     {
-        checkUuid($service->uuid);
+        checkUuid($siswa->uuid);
 
-        if ($service->delete()) {
-            return response()->json(['success' => true, 'redirect' => route('service.index')]);
+        if ($siswa->delete()) {
+            return response()->json(['success' => true, 'redirect' => route('siswa.index')]);
         }
 
         return response()->json(['message' => 'Gagal menghapus data'], 400);

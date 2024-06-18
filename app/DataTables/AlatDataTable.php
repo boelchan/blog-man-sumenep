@@ -27,7 +27,7 @@ class AlatDataTable extends DataTable
             ->editColumn('action', function ($query) {
                 return view('components.button.show', ['action' => route('alat.show', [$query->id, 'uuid' => $query->uuid])]).
                     view('components.button.edit', ['action' => route('alat.edit', [$query->id, 'uuid' => $query->uuid])]).
-                    view('components.button.destroy', ['action' => route('alat.destroy', [$query->id, 'uuid' => $query->uuid]), 'label' => $query->nama, 'target' => 'service-table']);
+                    view('components.button.destroy', ['action' => route('alat.destroy', [$query->id, 'uuid' => $query->uuid]), 'label' => $query->nama, 'target' => 'alat-table']);
             })
             ->rawColumns(['action']);
     }
