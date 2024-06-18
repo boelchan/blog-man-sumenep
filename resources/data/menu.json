@@ -51,6 +51,36 @@
         ]
     },
     {
+        "title": "Sewa Alat",
+        "icon": "refresh",
+        "role": [
+            "superadmin"
+        ],
+        "sub": [
+            {
+                "title": "Transaksi",
+                "route": "sewa-alat.index",
+                "role": [
+                    "superadmin"
+                ]
+            },
+            {
+                "title": "Master Siswa",
+                "route": "siswa.index",
+                "role": [
+                    "superadmin"
+                ]
+            },
+            {
+                "title": "Master Alat",
+                "route": "alat.index",
+                "role": [
+                    "superadmin"
+                ]
+            }
+        ]
+    },
+    {
         "title": "Sistem",
         "icon": "settings",
         "role": [

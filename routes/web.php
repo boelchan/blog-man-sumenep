@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlatController;
 use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontController;
@@ -7,6 +8,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IdentitasController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SewaAlatController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -40,6 +43,9 @@ Route::middleware(['auth', 'role:superadmin'])->group(function () {
     Route::post('user/{user}/{status}/banned/', [UserController::class, 'banned'])->name('user.banned');
     Route::resource('user', UserController::class);
     Route::resource('identitas', IdentitasController::class);
+    Route::resource('siswa', SiswaController::class);
+    Route::resource('alat', AlatController::class);
+    Route::resource('sewa-alat', SewaAlatController::class);
 });
 
 Route::prefix('admin')->middleware(['auth', 'role:superadmin|operator'])->group(function () {
