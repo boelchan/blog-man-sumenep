@@ -9,6 +9,7 @@ use App\Http\Controllers\IdentitasController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SewaAlatController;
+use App\Http\Controllers\SewaAlatDetailController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProfileController;
@@ -46,6 +47,7 @@ Route::middleware(['auth', 'role:superadmin'])->group(function () {
     Route::resource('siswa', SiswaController::class);
     Route::resource('alat', AlatController::class);
     Route::resource('sewa-alat', SewaAlatController::class);
+    Route::resource('sewa-alat-detail', SewaAlatDetailController::class);
 });
 
 Route::prefix('admin')->middleware(['auth', 'role:superadmin|operator'])->group(function () {

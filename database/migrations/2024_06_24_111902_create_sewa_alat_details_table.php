@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sewa_alat', function (Blueprint $table) {
+        Schema::create('sewa_alat_detail', function (Blueprint $table) {
             $table->id();
-            $table->uuid();
-            $table->date('tanggal_sewa');
-            $table->date('tanggal_kembali');
-            $table->date('tanggal_dikembalikan')->nullable();
-            $table->foreignId('siswa_id')->references('id')->on('siswa');
+            $table->foreignId('sewa_alat_id')->references('id')->on('sewa_alat');
+            $table->foreignId('alat_id')->references('id')->on('alat');
+            $table->integer('jumlah');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sewa_alat');
+        Schema::dropIfExists('sewa_alat_detail');
     }
 };

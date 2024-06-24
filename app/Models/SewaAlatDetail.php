@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SewaAlat extends Model
+class SewaAlatDetail extends Model
 {
     use HasFactory;
 
@@ -14,7 +14,7 @@ class SewaAlat extends Model
      *
      * @var string
      */
-    protected $table = 'sewa_alat';
+    protected $table = 'sewa_alat_detail';
 
     /**
      * The attributes that aren't mass assignable.
@@ -23,8 +23,8 @@ class SewaAlat extends Model
      */
     protected $guarded = ['id'];
 
-    public function listAlat()
+    public function alat()
     {
-        return $this->hasMany(SewaAlatDetail::class, 'sewa_alat_id', 'id');
+        return $this->belongsTo(Alat::class);
     }
 }
