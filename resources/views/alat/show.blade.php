@@ -14,7 +14,8 @@
                         </h3>
                         <div class="card-actions">
                             <a href="javascript:void(0)" class="btn btn-outline-danger btn-sm delete-data" data-url="{{ route('alat.destroy', [$alat->id, 'uuid' => $alat->uuid]) }}" data-token="{{ csrf_token() }}" data-label="{{ $alat->judul }}"> Hapus </a>
-                            <a href="{{ route('alat.edit', [$alat->id, 'uuid' => $alat->uuid]) }}" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="{{ route('alat.edit', [$alat->id, 'uuid' => $alat->uuid]) }}" class="btn btn-success btn-sm">Edit</a>
+                            <a href="{{ route('alat.create') }}" class="btn btn-primary btn-sm">Tambah Baru</a>
                         </div>
                     </div>
                     <div class="card-body">

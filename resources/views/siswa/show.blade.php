@@ -14,7 +14,8 @@
                         </h3>
                         <div class="card-actions">
                             <a href="javascript:void(0)" class="btn btn-outline-danger btn-sm delete-data" data-url="{{ route('siswa.destroy', [$siswa->id, 'uuid' => $siswa->uuid]) }}" data-token="{{ csrf_token() }}" data-label="{{ $siswa->judul }}"> Hapus </a>
-                            <a href="{{ route('siswa.edit', [$siswa->id, 'uuid' => $siswa->uuid]) }}" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="{{ route('siswa.edit', [$siswa->id, 'uuid' => $siswa->uuid]) }}" class="btn btn-success btn-sm">Edit</a>
+                            <a href="{{ route('siswa.create') }}" class="btn btn-primary btn-sm">Tambah Baru</a>
                         </div>
                     </div>
                     <div class="card-body">
